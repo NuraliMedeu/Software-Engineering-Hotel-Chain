@@ -1,4 +1,4 @@
-package kz.hotel;
+package kz.hotelChain;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

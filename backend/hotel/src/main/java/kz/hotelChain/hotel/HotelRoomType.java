@@ -1,4 +1,4 @@
-package kz.hotel;
+package kz.hotelChain.hotel;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package kz.hotel;
+package kz.hotelChain.user;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

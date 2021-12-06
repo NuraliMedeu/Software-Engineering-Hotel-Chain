@@ -1,4 +1,4 @@
-package kz.hotel;
+package kz.hotelChain.user;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
