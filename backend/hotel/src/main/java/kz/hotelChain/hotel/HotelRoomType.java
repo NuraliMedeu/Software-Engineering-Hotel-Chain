@@ -6,11 +6,13 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 
@@ -27,12 +29,9 @@ class HotelRoomTypeId implements Serializable {
 public class HotelRoomType {
 	@Id
 	@JoinColumn(name="id", referencedColumnName="id")
-	@GeneratedValue(
-		strategy = SEQUENCE,
-		generator = "hotels_id_seq"
-	)
 	private Integer id;
 	@Id
+//	@JoinColumn(name="type", referencedColumnName="type")
 	private String type;
 	
 	public Integer getId() {

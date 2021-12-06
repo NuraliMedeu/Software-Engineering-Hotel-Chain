@@ -7,6 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.SequenceGenerator;
 
@@ -30,7 +31,9 @@ public class Hotel {
 	private Integer id;
 	
 	private String name;
-	private String address;
+	
+//	@OneToOne(targetEntity=Destination.class, cascade=CascadeType.ALL, mappedBy="city")
+	private String destination;
 	
 	@OneToMany(targetEntity=HotelPhone.class, cascade=CascadeType.ALL, mappedBy="id")
 	private List<HotelPhone> phones;
@@ -38,14 +41,23 @@ public class Hotel {
 	@OneToMany(targetEntity=HotelRoomType.class, cascade=CascadeType.ALL, mappedBy="id")
 	private List<HotelRoomType> room_types;
 	
+	@OneToMany(targetEntity=HotelRoomType.class, cascade=CascadeType.ALL, mappedBy="id")
+	private List<HotelRoom> rooms;
+	
 	public Hotel() {}
-	public Hotel(String name, String address, List<HotelPhone> phones, List<HotelRoomType> roomTypes) {
+	public Hotel(
+			String name,
+			String address,
+			List<HotelPhone> phones,
+			List<HotelRoomType> roomTypes,
+			List<HotelRoom> rooms) {
 		this.name = name;
-		this.address = address;
+		this.destination = address;
 		this.phones = phones;
 		this.room_types = roomTypes;
+		this.rooms = rooms;
 	}
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -59,10 +71,10 @@ public class Hotel {
 		this.name = name;
 	}
 	public String getAddress() {
-		return address;
+		return destination;
 	}
 	public void setAddress(String address) {
-		this.address = address;
+		this.destination = address;
 	}
 	public List<HotelPhone> getPhones() {
 		return phones;
@@ -70,17 +82,22 @@ public class Hotel {
 	public void setPhones(List<HotelPhone> phones) {
 		this.phones = phones;
 	}
-	public List<HotelRoomType> getRoomTypes() {
+	public List<HotelRoomType> getRoom_types() {
 		return room_types;
 	}
-	public void setRoomTypes(List<HotelRoomType> roomTypes) {
-		this.room_types = roomTypes;
+	public void setRoom_types(List<HotelRoomType> room_types) {
+		this.room_types = room_types;
+	}
+	public List<HotelRoom> getRooms() {
+		return rooms;
+	}
+	public void setRooms(List<HotelRoom> rooms) {
+		this.rooms = rooms;
 	}
 	
 	@Override
 	public String toString() {
-		return "Hotel [id=" + id + ", name=" + name + ", address=" + address + ", phones=" + phones + ", room_types="
-				+ room_types + "]";
+		return "Hotel [id=" + id + ", name=" + name + ", city=" + destination + ", phones=" + phones + ", room_types="
+				+ room_types + ", rooms=" + rooms + "]";
 	}
-
 }
