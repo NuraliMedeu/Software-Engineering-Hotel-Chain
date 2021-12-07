@@ -18,6 +18,13 @@
 		<java.version>11</java.version>
 	</properties>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
+		<dependency>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-compiler-plugin</artifactId>
+    		<version>3.8.1</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
@@ -57,14 +64,9 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>3.8.0</version>
-    			<configuration>
-					<version>2.4.1</version>
-        			<source>13</source>
-        			<target>13</target>
-				</configuration>
 			</plugin>
 		</plugins>
+		
 	</build>
 
 </project>
