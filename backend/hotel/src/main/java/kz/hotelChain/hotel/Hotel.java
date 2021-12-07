@@ -18,6 +18,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import java.util.List;
 
 import kz.hotelChain.destination.Destination;
+import kz.hotelChain.room.HotelRoom;
+import kz.hotelChain.roomType.HotelRoomType;
 
 @Entity(name = "Hotel")
 @Table(name = "hotels")

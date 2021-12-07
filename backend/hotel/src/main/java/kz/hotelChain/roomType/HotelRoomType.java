@@ -1,4 +1,4 @@
-package kz.hotelChain.hotel;
+package kz.hotelChain.roomType;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,20 +19,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Embeddable;
 import javax.persistence.EmbeddedId;
 
-@SuppressWarnings("serial")
-@Embeddable
-class HotelRoomTypeId implements Serializable {
-	Integer id;
-	String type;
-}
-
 @Entity(name = "HotelRoomType")
 @Table(name = "hotel_room_types")
 @IdClass(HotelRoomTypeId.class)
 public class HotelRoomType {
 	@Id
 	@JoinColumn(name="id", referencedColumnName="id")
-	@JsonIgnore
 	private Integer id;
 	@Id
 //	@JoinColumn(name="type", referencedColumnName="type")

@@ -110,3 +110,17 @@ Returns created entity with its ID.
 
 #### GET
 Return an array of identification types.
+
+----
+
+### /api/room_types
+
+#### GET
+Returns array of room types in every hotel (id is an id of a hotel)
+
+----
+
+### /api/rooms
+
+#### GET
+Returns array of rooms in every hotel (id is an id of a hotel)

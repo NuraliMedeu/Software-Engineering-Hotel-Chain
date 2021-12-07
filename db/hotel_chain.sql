@@ -38,6 +38,17 @@ CREATE TABLE public.bookings (
 ALTER TABLE public.bookings OWNER TO postgres;
 
 --
+-- Name: destinations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.destinations (
+    city text NOT NULL
+);
+
+
+ALTER TABLE public.destinations OWNER TO postgres;
+
+--
 -- Name: employees; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -123,7 +134,8 @@ CREATE TABLE public.hotel_rooms (
     room_number integer NOT NULL,
     floor integer NOT NULL,
     type text,
-    available boolean
+    available boolean,
+    cleaned boolean
 );
 
 
@@ -136,7 +148,7 @@ ALTER TABLE public.hotel_rooms OWNER TO postgres;
 CREATE TABLE public.hotels (
     id integer NOT NULL,
     name text,
-    address text
+    destination text
 );
 
 
@@ -225,6 +237,17 @@ COPY public.bookings (id, email, hotel_id, room_number, floor, check_in, check_o
 
 
 --
+-- Data for Name: destinations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.destinations (city) FROM stdin;
+Almaty
+Nur-Sultan
+Shimkent
+\.
+
+
+--
 -- Data for Name: employees; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -237,6 +260,11 @@ COPY public.employees (id, name, surname) FROM stdin;
 --
 
 COPY public.guests (email, name, surname, id, identification_type, identification_number) FROM stdin;
+zakhar.semenov@nu.edu.kz	Zakhar	Semenov	1	1	12345
+\N	Asd	asdwqe	2	\N	\N
+\N	Asd	asdwqe	5	\N	\N
+test@gmail.com	Asd	asdwqe	6	\N	\N
+test001@gmail.com	Test	TEst	13	1	123123
 \.
 
 
@@ -266,7 +294,8 @@ COPY public.hotel_room_types (id, type, size, capacity) FROM stdin;
 -- Data for Name: hotel_rooms; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.hotel_rooms (id, room_number, floor, type, available) FROM stdin;
+COPY public.hotel_rooms (id, room_number, floor, type, available, cleaned) FROM stdin;
+1	101	1	single	t	f
 \.
 
 
@@ -274,9 +303,11 @@ COPY public.hotel_rooms (id, room_number, floor, type, available) FROM stdin;
 -- Data for Name: hotels; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.hotels (id, name, address) FROM stdin;
-1	hotel1	almaty
-2	hotel2	nur-sultan
+COPY public.hotels (id, name, destination) FROM stdin;
+1	hotel1	Almaty
+3	Rixos	\N
+2	Royal	Nur-Sultan
+4	Royal	Almaty
 \.
 
 
@@ -296,6 +327,9 @@ COPY public.identification_types (id, name) FROM stdin;
 
 COPY public.users (email, password) FROM stdin;
 zakhar.semenov@nu.edu.kz	12345
+asd@gmail.com	12345
+test@gmail.com	12345
+test001@gmail.com	12345
 \.
 
 
@@ -303,14 +337,14 @@ zakhar.semenov@nu.edu.kz	12345
 -- Name: guests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.guests_id_seq', 1, false);
+SELECT pg_catalog.setval('public.guests_id_seq', 13, true);
 
 
 --
 -- Name: hotels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.hotels_id_seq', 2, true);
+SELECT pg_catalog.setval('public.hotels_id_seq', 5, true);
 
 
 --
@@ -334,6 +368,14 @@ ALTER TABLE ONLY public.bookings
 
 ALTER TABLE ONLY public.bookings
     ADD CONSTRAINT bookings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: destinations destinations_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.destinations
+    ADD CONSTRAINT destinations_pkey PRIMARY KEY (city);
 
 
 --
@@ -422,6 +464,14 @@ ALTER TABLE ONLY public.users
 
 ALTER TABLE ONLY public.bookings
     ADD CONSTRAINT bookings_hotel_id_room_number_floor_fkey FOREIGN KEY (hotel_id, room_number, floor) REFERENCES public.hotel_rooms(id, room_number, floor);
+
+
+--
+-- Name: hotels destination_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.hotels
+    ADD CONSTRAINT destination_fkey FOREIGN KEY (destination) REFERENCES public.destinations(city);
 
 
 --
