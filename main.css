@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-size: 30px;
+    font-size: 15px;
     margin: 0;
     padding: 0;
 }
@@ -15,24 +15,23 @@ nav {
     display: flex;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
+    height: 70px;
     justify-content: space-between;
-    margin-left: 155px;
-    margin-right: 155px;
-    margin-top: 60px;
+    margin-left: 75px;
+    margin-right: 75px;
 }
 
 .logo,
 .logo:hover {
     align-items: center;
-    border-bottom: 9px solid rgba(255, 0, 0, 0.95);
+    border-bottom: 5px solid rgba(255, 0, 0, 0.95);
     color: rgba(255, 255, 255, 1);
     display: flex;
     font-family: "Playfair Display", serif;
-    font-size: 72px;
+    font-size: 36px;
     font-weight: 700;
-    height: 65px;
-    padding-bottom: 35px;
-    width: 390px;
+    height: 70px;
+    width: auto;
 }
 
 a.active {
@@ -58,7 +57,8 @@ a.blue:hover {
 }
 
 .separator {
-    margin: 0 4px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 .section-reservation {
@@ -71,21 +71,21 @@ a.blue:hover {
     flex-direction: column;
     font-family: 'Playfair Display', serif;
     font-weight: 700;
-    height: 840px;
+    height: 420px;
     justify-content: center;
 }
 
 .container-reservation {
     background-color: rgba(255, 255, 255, 1);
-    border-radius: 20px 20px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
     font-family: 'Poppins', sans-serif;
-    padding: 65px;
+    padding: 32px;
     width: 90%;
 }
 
 .container-reservation h2 {
     color: rgba(86, 130, 195, 1);
-    font-size: 48px;
+    font-size: 24px;
     font-weight: 700;
 }
 
@@ -97,42 +97,45 @@ a.blue:hover {
 
 .container-field {
     align-items: left;
-    border-left: 2px solid rgba(0, 0, 0, 1);
+    border-left: 1px solid rgba(0, 0, 0, 1);
     cursor: pointer;
     display: inline-flex;
     justify-content: left;
-    padding: 20px;
+    padding: 10px;
     position: relative;
     width: 30%;
 }
 
 .button-reservation {
     background-color: rgba(86, 130, 195, 1);
-    color: rgba(255, 255, 255, 1);
-    padding: 1rem 2rem;
-    width: 15%;
-    border: none;
     border-radius: 6px;
+    border: none;
+    color: rgba(255, 255, 255, 1);
     font-size: 1.3rem;
+    padding-bottom: 16px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 16px;
+    width: 125px;
 }
 
 .input-hidden {
-    position: absolute;
     background-color: transparent;
     border: transparent;
-    width: 100%;
-    outline: none;
+    bottom: 0;
     caret-color: transparent;
     left: 0;
-    top: 0;
-    bottom: 0;
-    padding-top: 15%;
+    outline: none;
     padding-left: 45%;
+    padding-top: 15%;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 .section-reservation p {
-    font-size: 48px;
-    margin-top: 180px;
+    font-size: 24px;
+    margin-top: 90px;
 }
 
 .section-marketing {
@@ -141,7 +144,7 @@ a.blue:hover {
 }
 
 .section-marketing h2 {
-    font-size: 48px;
+    font-size: 24px;
     font-weight: 700;
 }
 
@@ -151,9 +154,9 @@ a.blue:hover {
     border-radius: 50%;
     color: rgba(0, 0, 0, 1);
     display: flex;
-    height: 100px;
+    height: 50px;
     justify-content: center;
-    width: 100px;
+    width: 50px;
 }
 
 .flex {
