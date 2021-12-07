@@ -1,81 +1,169 @@
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-html {
-  font-size: 16px;
-}
-.logo {
-  font-size: 3rem;
-  line-height: 3.5rem;
-  color: white;
-  padding-bottom: 1rem;
-  border-bottom: 5px solid red;
-}
-ul {
-  display: flex;
-  list-style: none;
+    box-sizing: border-box;
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
 }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 2rem;
-  margin-left: 13%;
-  margin-right: 13%;
+body {
+    background-color: rgba(28, 28, 28, 1);
 }
 
-.container {
-  margin: 0 12%;
+nav {
+    align-items: center;
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    justify-content: space-between;
+    margin-left: 155px;
+    margin-right: 155px;
+    margin-top: 60px;
 }
 
-.flex {
-  display: flex;
-}
-.center {
-  align-items: center;
-}
-.between {
-  justify-content: space-between;
-}
-
-.bg-black {
-  background-color: #1c1c1c;
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.white {
-  color: white !important;
-}
-.white:hover {
-  text-decoration: none;
+.logo,
+.logo:hover {
+    align-items: center;
+    border-bottom: 9px solid rgba(255, 0, 0, 0.95);
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    font-family: "Playfair Display", serif;
+    font-size: 72px;
+    font-weight: 700;
+    height: 65px;
+    padding-bottom: 35px;
+    width: 390px;
 }
 
 a.active {
-  color: rgb(14, 157, 200);
+    font-weight: 700;
 }
 
-.link {
-  color: white;
-  font-size: 1.2rem;
-  font-weight: 600;
+nav a {
+    color:rgba(255, 255, 255, 1);
+    cursor: pointer;
+    text-decoration: none;
 }
 
-.mb-1 {
-  margin-bottom: 1rem;
+nav a:hover {
+    color: rgba(130, 168, 203, 1);
 }
 
-.mr-2 {
-  margin-right: 2.5rem !important;
-  font-size: 1.2rem;
+.blue {
+    color: rgba(130, 168, 203, 1);
 }
 
-a:hover {
-  color: rgb(14, 157, 200);
+a.blue:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+.separator {
+    margin: 0 4px;
+}
+
+.section-reservation {
+    align-items: center;
+    background-image: url("./static/images/BG-1.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    height: 840px;
+    justify-content: center;
+}
+
+.container-reservation {
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 20px 20px 0px 0px;
+    font-family: 'Poppins', sans-serif;
+    padding: 65px;
+    width: 90%;
+}
+
+.container-reservation h2 {
+    color: rgba(86, 130, 195, 1);
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.container-reservation-fields {
+    display: flex;
+    font-weight: 700;
+    justify-content: space-between;
+}
+
+.container-field {
+    align-items: left;
+    border-left: 2px solid rgba(0, 0, 0, 1);
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: left;
+    padding: 20px;
+    position: relative;
+    width: 30%;
+}
+
+.button-reservation {
+    background-color: rgba(86, 130, 195, 1);
+    color: rgba(255, 255, 255, 1);
+    padding: 1rem 2rem;
+    width: 15%;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.3rem;
+}
+
+.input-hidden {
+    position: absolute;
+    background-color: transparent;
+    border: transparent;
+    width: 100%;
+    outline: none;
+    caret-color: transparent;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    padding-top: 15%;
+    padding-left: 45%;
+}
+
+.section-reservation p {
+    font-size: 48px;
+    margin-top: 180px;
+}
+
+.section-marketing {
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.section-marketing h2 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.circle {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 50%;
+    color: rgba(0, 0, 0, 1);
+    display: flex;
+    height: 100px;
+    justify-content: center;
+    width: 100px;
+}
+
+.flex {
+    display: flex;
+}
+
+.center {
+    align-items: center;
+}
+
+.space-between {
+    justify-content: space-between;
 }
