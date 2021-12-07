@@ -59,6 +59,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>3.8.0</version>
     			<configuration>
+					<version>2.4.1</version>
         			<source>13</source>
         			<target>13</target>
 				</configuration>
