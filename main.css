@@ -23,8 +23,8 @@ ul {
   align-items: center;
   justify-content: space-between;
   margin-top: 2rem;
-  margin-left: 7%;
-  margin-right: 7%;
+  margin-left: 13%;
+  margin-right: 13%;
 }
 
 .container {
@@ -42,7 +42,7 @@ ul {
 }
 
 .bg-black {
-  background-color: black;
+  background-color: #1c1c1c;
 }
 
 a {
