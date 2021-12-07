@@ -32,7 +32,7 @@ public class HotelController {
 
 	@GetMapping("/{id}")
 	@ResponseBody
-	public Hotel getHotel(@PathVariable Integer id) throws SQLException {
+	public Hotel getHotel(@PathVariable Integer id) {
 		return this.service.getHotel(id);
 	}
 	

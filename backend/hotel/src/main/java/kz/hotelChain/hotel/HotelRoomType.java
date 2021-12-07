@@ -3,6 +3,9 @@ package kz.hotelChain.hotel;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
@@ -29,6 +32,7 @@ class HotelRoomTypeId implements Serializable {
 public class HotelRoomType {
 	@Id
 	@JoinColumn(name="id", referencedColumnName="id")
+	@JsonIgnore
 	private Integer id;
 	@Id
 //	@JoinColumn(name="type", referencedColumnName="type")

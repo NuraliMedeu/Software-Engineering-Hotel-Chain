@@ -34,7 +34,12 @@ public class UserService {
 	}
 	
 	public User addUser(User user) {
-		return this.repo.save(user);
+		try {
+			return this.repo.save(user);
+		} catch(Exception e) {
+			System.out.println(e.toString());
+			return null;
+		}
 	}
 	
 	public User updateUser(String email, User data) {
@@ -52,7 +57,7 @@ public class UserService {
 	public String deleteUser(String email) {
 		try {
 			this.repo.deleteById(email);
-			return "Deleted with id: " + email;
+			return "Deleted with email: " + email;
 		} catch(Exception e) {
 			return "Not Found";
 		}

@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @SuppressWarnings("serial")
 @Embeddable
 class HoteRoomId implements Serializable {
@@ -29,6 +31,7 @@ class HoteRoomId implements Serializable {
 public class HotelRoom implements Serializable {
 	@Id
 	@JoinColumn(name="id", referencedColumnName="id")
+	@JsonIgnore
 	private Integer id;
 	@Id
 	@Column(name="room_number")

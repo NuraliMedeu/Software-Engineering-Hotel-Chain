@@ -26,6 +26,7 @@ public class HotelService {
 		try {
 			return repo.findById(id).get();
 		} catch(Exception e) {
+			System.out.println(e.toString());
 			return null;
 		}
 	}
@@ -40,7 +41,7 @@ public class HotelService {
 		try {
 			Hotel hotel = this.repo.findById(id).get();
 			hotel.setName(data.getName() != null ? data.getName() : hotel.getName());
-			hotel.setAddress(data.getAddress() != null ? data.getAddress() : hotel.getAddress());
+			hotel.setDestination(data.getDestination() != null ? data.getDestination() : hotel.getDestination());
 			hotel.setPhones(data.getPhones() != null ? data.getPhones() : hotel.getPhones());
 			hotel.setRoom_types(data.getRoom_types() != null ? data.getRoom_types() : hotel.getRoom_types());
 			hotel.setRooms(data.getRooms() != null ? data.getRooms() : hotel.getRooms());
