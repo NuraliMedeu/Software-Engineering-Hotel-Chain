@@ -48,7 +48,7 @@ public class Hotel {
 	@OneToMany(targetEntity=HotelRoomType.class, cascade=CascadeType.ALL, mappedBy="id")
 	private List<HotelRoomType> room_types;
 	
-	@OneToMany(targetEntity=HotelRoom.class, cascade=CascadeType.ALL, mappedBy="id")
+	@OneToMany(targetEntity=HotelRoom.class, cascade=CascadeType.ALL, mappedBy="hotel_id")
 	private List<HotelRoom> rooms;
 	
 	public Hotel() {}

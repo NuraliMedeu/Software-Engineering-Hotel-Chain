@@ -1,4 +1,4 @@
-package kz.hotelChain.guest;
+package kz.hotelChain.user.guest;
 
 import java.util.List;
 
@@ -23,11 +23,11 @@ public class GuestService {
 		return this.repo.findAll();
 	}
 	
-	public Guest getGuest(Integer id) {
+	public Guest getGuest(String email) {
 		try {
-			return this.repo.findById(id).get();
+			System.out.println(email);
+			return this.repo.findById(email).get();
 		} catch(Exception e) {
-			System.out.println("In getGuest:");
 			System.out.println(e.toString());
 			return null;
 		}
@@ -43,21 +43,20 @@ public class GuestService {
 	}
 	
 	//TODO
-	public Guest updateGuest(Integer id, Guest data) {
+	public Guest updateGuest(String email, Guest data) {
 		try {
-			Guest guest = this.repo.findById(id).get();
-			System.out.println("Guest PUT method not implemented.");
-			return this.repo.save(guest);
+//			Guest guest = this.repo.findById(email).get();
+			return null; //this.repo.save(guest);
 		} catch(Exception e) {
 			System.out.println(e.toString());
 			return null;
 		}
 	}
 	
-	public String deleteGuest(Integer id) {
+	public String deleteGuest(String email) {
 		try {
-			this.repo.deleteById(id);
-			return "Deleted with id: " + id;
+			this.repo.deleteById(email);
+			return "Deleted with id: " + email;
 		} catch(Exception e) {
 			return "Not Found";
 		}

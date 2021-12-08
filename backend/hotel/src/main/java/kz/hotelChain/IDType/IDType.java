@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
 
-import kz.hotelChain.guest.Guest;
+import kz.hotelChain.user.guest.Guest;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;

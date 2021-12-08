@@ -16,6 +16,20 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+--
+-- Name: btree_gist; Type: EXTENSION; Schema: -; Owner: -
+--
+
+CREATE EXTENSION IF NOT EXISTS btree_gist WITH SCHEMA public;
+
+
+--
+-- Name: EXTENSION btree_gist; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION btree_gist IS 'support for indexing common datatypes in GiST';
+
+
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -31,11 +45,26 @@ CREATE TABLE public.bookings (
     room_number integer,
     floor integer,
     check_in date,
-    check_out date
+    check_out date,
+    CONSTRAINT dates_check CHECK ((check_in < check_out))
 );
 
 
 ALTER TABLE public.bookings OWNER TO postgres;
+
+--
+-- Name: bookings_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.bookings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    MAXVALUE 2147483647
+    CACHE 1;
+
+
+ALTER TABLE public.bookings_id_seq OWNER TO postgres;
 
 --
 -- Name: destinations; Type: TABLE; Schema: public; Owner: postgres
@@ -66,38 +95,15 @@ ALTER TABLE public.employees OWNER TO postgres;
 --
 
 CREATE TABLE public.guests (
-    email text,
+    email text NOT NULL,
     name text,
     surname text,
-    id integer NOT NULL,
     identification_type integer,
     identification_number text
 );
 
 
 ALTER TABLE public.guests OWNER TO postgres;
-
---
--- Name: guests_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.guests_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.guests_id_seq OWNER TO postgres;
-
---
--- Name: guests_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.guests_id_seq OWNED BY public.guests.id;
-
 
 --
 -- Name: hotel_phones; Type: TABLE; Schema: public; Owner: postgres
@@ -215,13 +221,6 @@ CREATE TABLE public.users (
 ALTER TABLE public.users OWNER TO postgres;
 
 --
--- Name: guests id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.guests ALTER COLUMN id SET DEFAULT nextval('public.guests_id_seq'::regclass);
-
-
---
 -- Name: identification_types id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -233,6 +232,10 @@ ALTER TABLE ONLY public.identification_types ALTER COLUMN id SET DEFAULT nextval
 --
 
 COPY public.bookings (id, email, hotel_id, room_number, floor, check_in, check_out) FROM stdin;
+1	zakhar.semenov@nu.edu.kz	1	1	1	2021-12-08	2021-12-10
+2	zakhar.semenov@nu.edu.kz	1	2	1	2021-12-08	2021-12-10
+3	galymzhan.baltabay@nu.edu.kz	4	1	1	2021-12-08	2021-12-20
+4	zakhar.semenov@nu.edu.kz	4	2	1	2021-12-12	2021-12-18
 \.
 
 
@@ -259,12 +262,9 @@ COPY public.employees (id, name, surname) FROM stdin;
 -- Data for Name: guests; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.guests (email, name, surname, id, identification_type, identification_number) FROM stdin;
-zakhar.semenov@nu.edu.kz	Zakhar	Semenov	1	1	12345
-\N	Asd	asdwqe	2	\N	\N
-\N	Asd	asdwqe	5	\N	\N
-test@gmail.com	Asd	asdwqe	6	\N	\N
-test001@gmail.com	Test	TEst	13	1	123123
+COPY public.guests (email, name, surname, identification_type, identification_number) FROM stdin;
+zakhar.semenov@nu.edu.kz	Zakhar	Semenov	1	11111
+galymzhan.baltabay@nu.edu.kz	Galymzhan	Baltabay	2	111-123
 \.
 
 
@@ -273,9 +273,12 @@ test001@gmail.com	Test	TEst	13	1	123123
 --
 
 COPY public.hotel_phones (id, phone_number) FROM stdin;
-1	123123
-1	321321
-2	888155
+1	123-123
+1	321-321
+2	333-000
+3	001-001
+4	007-666
+4	123-456
 \.
 
 
@@ -286,7 +289,12 @@ COPY public.hotel_phones (id, phone_number) FROM stdin;
 COPY public.hotel_room_types (id, type, size, capacity) FROM stdin;
 1	single	10	1
 1	double	15	2
+1	king	25	4
 2	single	7	1
+2	double king	30	2
+2	family	30	4
+3	single	6	1
+4	double	12	2
 \.
 
 
@@ -295,7 +303,26 @@ COPY public.hotel_room_types (id, type, size, capacity) FROM stdin;
 --
 
 COPY public.hotel_rooms (id, room_number, floor, type, available, cleaned) FROM stdin;
-1	101	1	single	t	f
+1	1	1	single	t	f
+1	2	1	single	t	f
+1	3	1	single	t	f
+1	4	1	single	t	f
+1	1	2	double	t	f
+1	2	2	double	t	f
+1	1	3	king	t	f
+2	1	1	single	t	f
+2	2	1	single	t	f
+2	3	1	single	t	f
+2	4	1	single	t	f
+2	1	2	double king	t	f
+2	2	2	double king	t	f
+2	1	3	family	t	f
+3	1	1	single	t	f
+3	2	1	single	t	f
+3	3	1	single	t	f
+3	4	1	single	t	f
+4	1	1	double	t	f
+4	2	1	double	t	f
 \.
 
 
@@ -304,10 +331,10 @@ COPY public.hotel_rooms (id, room_number, floor, type, available, cleaned) FROM 
 --
 
 COPY public.hotels (id, name, destination) FROM stdin;
-1	hotel1	Almaty
-3	Rixos	\N
-2	Royal	Nur-Sultan
-4	Royal	Almaty
+1	Rixos	Almaty
+2	Elite	Nur-Sultan
+3	Royal	Shimkent
+4	Mercure	Almaty
 \.
 
 
@@ -327,24 +354,22 @@ COPY public.identification_types (id, name) FROM stdin;
 
 COPY public.users (email, password) FROM stdin;
 zakhar.semenov@nu.edu.kz	12345
-asd@gmail.com	12345
-test@gmail.com	12345
-test001@gmail.com	12345
+galymzhan.baltabay@nu.edu.kz	123123
 \.
 
 
 --
--- Name: guests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: bookings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.guests_id_seq', 13, true);
+SELECT pg_catalog.setval('public.bookings_id_seq', 4, true);
 
 
 --
 -- Name: hotels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.hotels_id_seq', 5, true);
+SELECT pg_catalog.setval('public.hotels_id_seq', 4, true);
 
 
 --
@@ -352,14 +377,6 @@ SELECT pg_catalog.setval('public.hotels_id_seq', 5, true);
 --
 
 SELECT pg_catalog.setval('public.identification_types_id_seq', 1, false);
-
-
---
--- Name: bookings bookings_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.bookings
-    ADD CONSTRAINT bookings_email_key UNIQUE (email);
 
 
 --
@@ -399,7 +416,7 @@ ALTER TABLE ONLY public.guests
 --
 
 ALTER TABLE ONLY public.guests
-    ADD CONSTRAINT guests_pkey PRIMARY KEY (id);
+    ADD CONSTRAINT guests_pkey PRIMARY KEY (email);
 
 
 --
@@ -443,6 +460,14 @@ ALTER TABLE ONLY public.identification_types
 
 
 --
+-- Name: bookings no_overlapping_dates; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT no_overlapping_dates EXCLUDE USING gist (hotel_id WITH =, room_number WITH =, floor WITH =, daterange(check_in, check_out, '[]'::text) WITH &&);
+
+
+--
 -- Name: hotel_room_types unique_id_type; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -456,6 +481,14 @@ ALTER TABLE ONLY public.hotel_room_types
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT users_pkey PRIMARY KEY (email);
+
+
+--
+-- Name: bookings bokkings_email_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.bookings
+    ADD CONSTRAINT bokkings_email_fkey FOREIGN KEY (email) REFERENCES public.guests(email);
 
 
 --

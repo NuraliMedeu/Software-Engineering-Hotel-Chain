@@ -57,10 +57,6 @@ public class HotelPhone implements Serializable {
 	@Id
 	private String phone_number;
 	
-//    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-//    @JoinColumn(name = "id")
-//	private Hotel hotel;
-	
 	public Integer getId() {
 		return id;
 	}

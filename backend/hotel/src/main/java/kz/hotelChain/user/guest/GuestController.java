@@ -1,4 +1,4 @@
-package kz.hotelChain.guest;
+package kz.hotelChain.user.guest;
 
 import java.util.List;
 
@@ -30,7 +30,7 @@ public class GuestController {
 	}
 	
 	@GetMapping("/{id}")
-	public Guest getGuest(@PathVariable Integer id) {
+	public Guest getGuest(@PathVariable String id) {
 		return this.service.getGuest(id);
 	}
 	
@@ -40,12 +40,12 @@ public class GuestController {
 	}
 	
 	@PutMapping("/{id}")
-	public Guest updateGues(@PathVariable Integer id, @RequestBody Guest guest) {
+	public Guest updateGues(@PathVariable String id, @RequestBody Guest guest) {
 		return this.service.updateGuest(id, guest);
 	}
 	
 	@DeleteMapping("/{id}")
-	public String deleteGuest(@PathVariable Integer id) {
+	public String deleteGuest(@PathVariable String id) {
 		return this.service.deleteGuest(id);
 	}
 }

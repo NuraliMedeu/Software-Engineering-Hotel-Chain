@@ -96,11 +96,12 @@ Create new guest entity:
 }
 ```
 
-Returns created entity with its ID.
+Returns created entity.
 
-#### GET (api/guest/{id}) Work in progress
+#### GET (api/guest/{email})
+Return entity by its email.
 
-#### PUT (api/guest/{id}) Work in progress
+#### PUT (api/guest/{email}) Work in progress
 
 #### DELETE (api/user/{email}) Work in progress
 
@@ -124,3 +125,25 @@ Returns array of room types in every hotel (id is an id of a hotel)
 
 #### GET
 Returns array of rooms in every hotel (id is an id of a hotel)
+
+----
+
+### /api/booking
+
+#### GET
+Returns an array of all bookings
+
+#### POST
+
+```json
+{
+	"email": "test001@gmail.com",
+	"check_in": "2021-12-08",
+	"check_out": "2021-12-10",
+	"room": {
+		"hotel_id": 1,
+		"room_number": 101,
+		"floor": 1
+	}
+}
+```
