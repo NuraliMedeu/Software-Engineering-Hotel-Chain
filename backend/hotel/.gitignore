@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Database username and password ###
-**/application.properties
+# **/application.properties
