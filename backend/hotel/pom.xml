@@ -21,7 +21,7 @@
 		<dependency>
   			<groupId>org.apache.maven.plugins</groupId>
   			<artifactId>maven-compiler-plugin</artifactId>
-  			<version>3.8.0</version>
+  			<version>3.8.1</version>
   			<type>maven-plugin</type>
 		</dependency>
 		<dependency>
@@ -64,7 +64,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
+			<!-- <plugin>
     			<groupId>org.apache.maven.plugins</groupId>
     			<artifactId>maven-compiler-plugin</artifactId>
     			<version>3.8.0</version>
@@ -72,7 +72,7 @@
         			<source>13</source>
         			<target>13</target>
     				</configuration>	
-			</plugin>
+			</plugin> -->
 		</plugins>
 		
 	</build>
