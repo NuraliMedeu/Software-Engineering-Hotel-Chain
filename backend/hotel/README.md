@@ -93,6 +93,31 @@ Create new guest entity:
 	"email": "test@gmail.com",
 	"id_typeNum": 1,
 	"id_number": "111222"
+### /api/user_types
+
+#### GET
+Return an array of user types.
+
+----
+
+### /api/user
+
+#### GET
+Return an array of users.
+
+#### POST
+Create new user entity:
+```json
+{
+	"email": "test001@gmail.com",
+	"password": "12345",
+	"name": "John",
+	"surname": "Doe",
+	"id_typeNum": 1,
+	"id_number": "111222"
+	"user_type": {
+		"type": "guest"
+	}
 }
 ```
 
@@ -104,6 +129,12 @@ Return entity by its email.
 #### PUT (api/guest/{email}) Work in progress
 
 #### DELETE (api/user/{email}) Work in progress
+#### GET (api/user/{email})
+Return entity by its email.
+
+#### PUT Work in progress
+
+#### DELETE  Work in progress
 
 ----
 

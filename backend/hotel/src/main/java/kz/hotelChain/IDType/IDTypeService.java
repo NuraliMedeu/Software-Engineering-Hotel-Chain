@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 import kz.hotelChain.hotel.Hotel;
 import kz.hotelChain.repositories.HotelsRepository;
 import kz.hotelChain.repositories.IDTypesRepository;
-import kz.hotelChain.repositories.UsersRepository;
 
 @Service
 @Component

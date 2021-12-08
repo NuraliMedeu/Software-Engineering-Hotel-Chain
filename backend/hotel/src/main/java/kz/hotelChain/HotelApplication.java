@@ -20,8 +20,6 @@ import kz.hotelChain.hotel.Hotel;
 import kz.hotelChain.hotel.HotelPhone;
 import kz.hotelChain.repositories.HotelsRepository;
 import kz.hotelChain.repositories.IDTypesRepository;
-import kz.hotelChain.repositories.UsersRepository;
-import kz.hotelChain.user.User;
 
 import java.sql.SQLException;
 import java.util.List;

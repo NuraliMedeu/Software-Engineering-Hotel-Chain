@@ -59,17 +59,13 @@
 	(4, 1, 1, 'double', true, false),
 	(4, 2, 1, 'double', true, false)
 
-## Users
-	('zakhar.semenov@nu.edu.kz', '12345'),
-	('galymzhan.baltabay@nu.edu.kz', '123123')
-
 ## ID types
 	(nextval('identification_types_id_seq'), 'passport'),
 	(nextval('identification_types_id_seq'), 'driving license')
 
-## Guests
-	('zakhar.semenov@nu.edu.kz', 'Zakhar', 'Semenov', 1, '11111'),
-	('galymzhan.baltabay@nu.edu.kz', 'Galymzhan', 'Baltabay', 2, '111-123')
+## Users
+	('zakhar.semenov@nu.edu.kz', 'Zakhar', 'Semenov', 1, '11111', '123123'),
+	('galymzhan.baltabay@nu.edu.kz', 'Galymzhan', 'Baltabay', 2, '111-123', '321321')
 
 ## Bookings
 	(nextval('bookings_id_seq'), 'zakhar.semenov@nu.edu.kz', 1, 1, 1, '2021-12-8', '2021-12-10'),

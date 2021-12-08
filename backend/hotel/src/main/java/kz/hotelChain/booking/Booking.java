@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import kz.hotelChain.destination.Destination;
 import kz.hotelChain.room.HotelRoom;
 import kz.hotelChain.room.HotelRoomId;
-import kz.hotelChain.user.guest.Guest;
+import kz.hotelChain.userType.user.User;
 
 import javax.persistence.Id;
 import javax.persistence.IdClass;

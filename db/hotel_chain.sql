@@ -91,21 +91,6 @@ CREATE TABLE public.employees (
 ALTER TABLE public.employees OWNER TO postgres;
 
 --
--- Name: guests; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.guests (
-    email text NOT NULL,
-    name text,
-    surname text,
-    identification_type integer,
-    identification_number text
-);
-
-
-ALTER TABLE public.guests OWNER TO postgres;
-
---
 -- Name: hotel_phones; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -209,11 +194,27 @@ ALTER SEQUENCE public.identification_types_id_seq OWNED BY public.identification
 
 
 --
+-- Name: user_types; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.user_types (
+    name text NOT NULL
+);
+
+
+ALTER TABLE public.user_types OWNER TO postgres;
+
+--
 -- Name: users; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.users (
     email text NOT NULL,
+    name text,
+    surname text,
+    identification_type integer,
+    identification_number text,
+    user_type text NOT NULL,
     password text
 );
 
@@ -236,6 +237,7 @@ COPY public.bookings (id, email, hotel_id, room_number, floor, check_in, check_o
 2	zakhar.semenov@nu.edu.kz	1	2	1	2021-12-08	2021-12-10
 3	galymzhan.baltabay@nu.edu.kz	4	1	1	2021-12-08	2021-12-20
 4	zakhar.semenov@nu.edu.kz	4	2	1	2021-12-12	2021-12-18
+5	test001@gmail.com	3	2	1	2021-12-12	2021-12-18
 \.
 
 
@@ -255,16 +257,6 @@ Shimkent
 --
 
 COPY public.employees (id, name, surname) FROM stdin;
-\.
-
-
---
--- Data for Name: guests; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.guests (email, name, surname, identification_type, identification_number) FROM stdin;
-zakhar.semenov@nu.edu.kz	Zakhar	Semenov	1	11111
-galymzhan.baltabay@nu.edu.kz	Galymzhan	Baltabay	2	111-123
 \.
 
 
@@ -349,12 +341,25 @@ COPY public.identification_types (id, name) FROM stdin;
 
 
 --
+-- Data for Name: user_types; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.user_types (name) FROM stdin;
+guest
+manager
+desk clerk
+employee
+\.
+
+
+--
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.users (email, password) FROM stdin;
-zakhar.semenov@nu.edu.kz	12345
-galymzhan.baltabay@nu.edu.kz	123123
+COPY public.users (email, name, surname, identification_type, identification_number, user_type, password) FROM stdin;
+zakhar.semenov@nu.edu.kz	Zakhar	Semenov	1	11111	guest	\N
+galymzhan.baltabay@nu.edu.kz	Galymzhan	Baltabay	2	111-123	guest	\N
+test001@gmail.com	Test	Test	1	123123	desk clerk	12345
 \.
 
 
@@ -362,11 +367,7 @@ galymzhan.baltabay@nu.edu.kz	123123
 -- Name: bookings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.bookings_id_seq', 4, true);
-
-
 --
--- Name: hotels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.hotels_id_seq', 4, true);
@@ -404,18 +405,18 @@ ALTER TABLE ONLY public.employees
 
 
 --
--- Name: guests guests_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users guests_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.guests
+ALTER TABLE ONLY public.users
     ADD CONSTRAINT guests_email_key UNIQUE (email);
 
 
 --
--- Name: guests guests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users guests_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.guests
+ALTER TABLE ONLY public.users
     ADD CONSTRAINT guests_pkey PRIMARY KEY (email);
 
 
@@ -476,11 +477,11 @@ ALTER TABLE ONLY public.hotel_room_types
 
 
 --
--- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: user_types user_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.users
-    ADD CONSTRAINT users_pkey PRIMARY KEY (email);
+ALTER TABLE ONLY public.user_types
+    ADD CONSTRAINT user_types_pkey PRIMARY KEY (name);
 
 
 --
@@ -488,7 +489,7 @@ ALTER TABLE ONLY public.users
 --
 
 ALTER TABLE ONLY public.bookings
-    ADD CONSTRAINT bokkings_email_fkey FOREIGN KEY (email) REFERENCES public.guests(email);
+    ADD CONSTRAINT bokkings_email_fkey FOREIGN KEY (email) REFERENCES public.users(email);
 
 
 --
@@ -524,18 +525,18 @@ ALTER TABLE ONLY public.hotel_phones
 
 
 --
--- Name: guests guests_email_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users guest_user_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.guests
-    ADD CONSTRAINT guests_email_fkey FOREIGN KEY (email) REFERENCES public.users(email);
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT guest_user_type_fkey FOREIGN KEY (user_type) REFERENCES public.user_types(name);
 
 
 --
--- Name: guests guests_identification_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: users guests_identification_type_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.guests
+ALTER TABLE ONLY public.users
     ADD CONSTRAINT guests_identification_type_fkey FOREIGN KEY (identification_type) REFERENCES public.identification_types(id);
 
 
