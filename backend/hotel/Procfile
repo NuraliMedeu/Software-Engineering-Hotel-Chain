@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar Software-Engineering-Hotel-Chain.jar
+web: java -Dserver.port=$PORT -jar "backend/hotel/target/Software-Engineering-Hotel-Chain.jar"
