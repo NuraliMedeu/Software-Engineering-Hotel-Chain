@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import kz.hotelChain.IDType.IDType;
 import kz.hotelChain.hotel.Hotel;
 import kz.hotelChain.hotel.HotelPhone;
 import kz.hotelChain.repositories.HotelsRepository;
 import kz.hotelChain.repositories.IDTypesRepository;
 import kz.hotelChain.repositories.UsersRepository;
-import kz.hotelChain.user.IDType;
 import kz.hotelChain.user.User;
 
 import java.sql.SQLException;

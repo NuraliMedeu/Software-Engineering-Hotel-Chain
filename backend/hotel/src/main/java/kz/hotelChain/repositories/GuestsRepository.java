@@ -3,9 +3,9 @@ package kz.hotelChain.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import kz.hotelChain.IDType.IDType;
+import kz.hotelChain.user.guest.Guest;
 
 @Repository
-public interface IDTypesRepository extends JpaRepository<IDType, Integer>  {
+public interface GuestsRepository extends JpaRepository<Guest, String> {
 
 }

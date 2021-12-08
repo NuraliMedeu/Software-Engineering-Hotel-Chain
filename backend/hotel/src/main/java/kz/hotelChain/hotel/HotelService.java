@@ -26,6 +26,7 @@ public class HotelService {
 		try {
 			return repo.findById(id).get();
 		} catch(Exception e) {
+			System.out.println(e.toString());
 			return null;
 		}
 	}
@@ -39,12 +40,15 @@ public class HotelService {
 	public Hotel updateHotel(Integer id, Hotel data) {
 		try {
 			Hotel hotel = this.repo.findById(id).get();
-			hotel.setName(!data.getName().equals("")? data.getName() : hotel.getName());
-			hotel.setAddress(!data.getAddress().equals("") ? data.getAddress() : hotel.getAddress());
-			hotel.setPhones(data.getPhones().size() != 0 ? data.getPhones() : hotel.getPhones());
+			hotel.setName(data.getName() != null ? data.getName() : hotel.getName());
+			hotel.setDestination(data.getDestination() != null ? data.getDestination() : hotel.getDestination());
+			hotel.setPhones(data.getPhones() != null ? data.getPhones() : hotel.getPhones());
+			hotel.setRoom_types(data.getRoom_types() != null ? data.getRoom_types() : hotel.getRoom_types());
+			hotel.setRooms(data.getRooms() != null ? data.getRooms() : hotel.getRooms());
 			
 			return this.repo.save(hotel);
 		} catch(Exception e) {
+			System.out.println(e.toString());
 			return null;
 		}
 	}
