@@ -30,34 +30,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 @SpringBootApplication
 @EnableJpaRepositories("kz.hotelChain.repositories")
 public class HotelApplication {
-	
-	public static void main(String[] args) {
-		SpringApplication.run(HotelApplication.class, args);
-	}
-	
-	/*
-	@Autowired
-	private IDTypesRepository idTypesRepo;
-	
-	@Autowired
-	private UsersRepository usersRepo;
-	
-	@GetMapping("/id_types")
-	public List<IDType> getIdTypes() throws SQLException {
-		List<IDType> types = idTypesRepo.findAll();
-		return types;
-	}
-	
-	@GetMapping("/user")
-	public List<User> registerUser() throws SQLException {
-		return usersRepo.findAll();
-	}
-	
-	@PostMapping("/user")
-	@ResponseBody
-	public void registerUser(@RequestBody User req) throws SQLException {
-		usersRepo.save(new User(req.getEmail(), req.getPassword()));
-	}
-	*/
-	
+
+    public static void main(String[] args) {
+        SpringApplication.run(HotelApplication.class, args);
+    }
+
 }
