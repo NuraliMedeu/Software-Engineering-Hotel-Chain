@@ -43,124 +43,164 @@
               type="image/x-icon" />
     </head>
 
-    <body class="bg-black">
-        <header class="header">
-            <div class="logo">
-                <a href="./index.html"
-                   class="white">Voyage Inn</a>
-            </div>
-            <ul>
-                <li>
-                    <a href="./index.html"
-                       class="active link mr-2">Home</a>
-                </li>
-                <li>
-                    <a href="./pages/overview/overview.html"
-                       class="link mr-2">Overview</a>
-                </li>
-                <li>
-                    <a href="./pages/offers/offers.html"
-                       class="link mr-2">Offers</a>
-                </li>
-                <li>
-                    <a href="./pages/contact-us/contact-us.html"
-                       class="link mr-2">Contact us</a>
-                </li>
-                <div class="flex-center">
-                    <li>
-                        <a href="./pages/signup/signup.html"
-                           class="link blue">Join</a>
-                    </li>
-                    <span
-                          style="color: white; margin: 0 4px">|</span>
-                    <li>
-                        <a href="./pages/signin/signin.html"
-                           class="link blue">Sign in</a>
-                    </li>
+  <body class="bg-black">
+    <header class="header">
+      <div class="logo">
+        <a href="./index.html" class="white">Voyage Inn</a>
+      </div>
+      <ul>
+        <li>
+          <a href="./index.html" class="active link mr-2">Home</a>
+        </li>
+        <li>
+          <a href="./pages/overview/overview.html" class="link mr-2"
+            >Overview</a
+          >
+        </li>
+        <li>
+          <a href="./pages/offers/offers.html" class="link mr-2">Offers</a>
+        </li>
+        <li>
+          <a href="./pages/contact-us/contact-us.html" class="link mr-2"
+            >Contact us</a
+          >
+        </li>
+        <div class="flex-center">
+          <li>
+            <a href="./pages/signup/signup.html" class="link blue">Join</a>
+          </li>
+          <span style="color: white; margin: 0 4px">|</span>
+          <li>
+            <a href="./pages/signin/signin.html" class="link blue">Sign in</a>
+          </li>
+        </div>
+      </ul>
+    </header>
+    <main class="main">
+      <div class="section-1">
+        <div class="search-box">
+          <h3 class="h3 mb-1">Make a reservation</h3>
+          <form id="search-form" class="flex center between">
+            <div class="search-field">
+              <div
+                class="field-box left-border"
+                data-toggle="modal"
+                data-target="#destinationModal"
+              >
+                <img
+                  src="static/icons/destination.svg"
+                  alt="destination"
+                  class="icon"
+                />
+                <div>
+                    <span>Destination</span>
+                    <input
+                  name="destination"
+                  id="destination"
+                    type="text"
+                    class="hided-input-2"
+                    style="margin-top: 0.5rem; font-weight: bolder;"
+                  />
                 </div>
-            </ul>
-        </header>
+                <img
+                  src="static/icons/arrow-down.svg"
+                  alt="arrow"
+                  class="icon-2"
+                />
+              </div>
+              <div id="check-in" class="field-box">
+                <img
+                  src="static/icons/calendar.svg"
+                  alt="calendar"
+                  class="icon"
+                />
+                <div>
+                  <span
+                    style="
+                      display: inline-block;
+                      margin-bottom: 2rem;
+                      color: rgb(39, 38, 38);
+                      font-weight: 700;
+                    "
+                    >Check-in</span
+                  >
+                  <input
+                  name="check-in"
+                    type="text"
+                    class="hided-input"
+                    placeholder="MM/DD/YYYY"
+                  />
+                </div>
+              </div>
+              <div id="check-out" class="field-box">
+                <img
+                  src="static/icons/calendar.svg"
+                  alt="calendar"
+                  class="icon"
+                />
+                <div>
+                  <span
+                    style="
+                      display: inline-block;
+                      margin-bottom: 2rem;
+                      color: rgb(39, 38, 38);
+                      font-weight: 700;
+                    "
+                    >Check-out</span
+                  >
+                  <input
 
-        <main class="main">
-            <div class="section-1">
-                <div class="search-box">
-                    <h3 class="h3 mb-1">Make a reservation
-                    </h3>
-                    <form class="flex center between"
-                          method="POST"
-                          action="./pages/search/search.html">
-                        <div class="search-field">
-                            <div class="field-box left-border"
-                                 data-toggle="modal"
-                                 data-target="#destinationModal">
-                                <img src="static/icons/destination.svg"
-                                     alt="destination"
-                                     class="icon" />
-                                <span>Destination</span>
-                                <img src="static/icons/arrow-down.svg"
-                                     alt="arrow"
-                                     class="icon-2" />
-                            </div>
-                            <div id="check-in"
-                                 class="field-box">
-                                <img src="static/icons/calendar.svg"
-                                     alt="calendar"
-                                     class="icon" />
-                                <div>
-                                    <span style="
-                      display: inline-block;
-                      margin-bottom: 2rem;
-                      color: rgb(39, 38, 38);
-                      font-weight: 700;
-                    ">Check-in</span>
-                                    <input type="text"
-                                           class="hided-input"
-                                           placeholder="MM/DD/YYYY" />
-                                </div>
-                            </div>
-                            <div id="check-out"
-                                 class="field-box">
-                                <img src="static/icons/calendar.svg"
-                                     alt="calendar"
-                                     class="icon" />
-                                <div>
-                                    <span style="
-                      display: inline-block;
-                      margin-bottom: 2rem;
-                      color: rgb(39, 38, 38);
-                      font-weight: 700;
-                    ">Check-out</span>
-                                    <input type="text"
-                                           class="hided-input"
-                                           placeholder="MM/DD/YYYY" />
-                                </div>
-                            </div>
-                            <div class="field-box"
-                                 data-toggle="modal"
-                                 data-target="#occupancyModal">
-                                <img src="static/icons/user.svg"
-                                     alt="user"
-                                     class="icon" />
-                                <span>Guests</span>
-                                <img src="static/icons/arrow-down.svg"
-                                     alt="arrow"
-                                     class="icon-2" />
-                            </div>
-                        </div>
-                        <button class="btn btn-primary btn-lg"
-                                style="width: 15%; padding: 1rem">
-                            Search
-                        </button>
-                    </form>
+                  name="check-out"
+                    type="text"
+                    class="hided-input"
+                    placeholder="MM/DD/YYYY"
+                  />
                 </div>
-                <p class="text-center">We're there when
-                    plans change</p>
+              </div>
+              <div
+                class="field-box"
+                data-toggle="modal"
+                data-target="#occupancyModal"
+              >
+                <img src="static/icons/user.svg" alt="user" class="icon" />
+                
+                <div>
+                    <span>Guests</span>
+                    <input
+                  id="guests"
+                  name="guests"
+                    type="text"
+                    class="hided-input"
+                    style="margin-top: 0.5rem; font-weight: bolder;"
+
+                  />
+                </div>
+                <img
+                  src="static/icons/arrow-down.svg"
+                  alt="arrow"
+                  class="icon-2"
+                />
+              </div>
             </div>
-        </main>
-        <div class="container mt-3"
-             style="display: grid; grid-template-columns: 10% 90%; grid-gap: 20px">
-            <div class="bg-white text-black"
-                 style="
+            <button
+              class="btn btn-primary btn-lg"
+              style="width: 15%; padding: 1rem"
+              id="search-button"
+            >
+              Search
+            </button>
+          </form>
+        </div>
+        <p class="text-center">We're there when plans change</p>
+      </div>
+    </main>
+     <div
+        class="container mt-3"
+        style="display: grid; grid-template-columns: 10% 90%; grid-gap: 20px"
+      >
+        <div
+          class="bg-white text-black"
+          style="
             align-items: center;
             border-radius: 50%;
             display: flex;
@@ -239,73 +279,48 @@
                 </p>
             </div>
 
-            <div class="modal fade"
-                 id="occupancyModal"
-                 tabindex="-1"
-                 aria-labelledby="occupancyModalLabel"
-                 aria-hidden="true">
-                <div
-                     class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title"
-                                id="occupancyModalLabel">
-                                Occupancy</h5>
-                            <button type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">...</div>
-                        <div class="modal-footer">
-                            <button type="button"
-                                    class="btn btn-primary">Save
-                                changes</button>
-
-                            <button type="button"
-                                    class="btn btn-secondary"
-                                    data-bs-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal fade"
-                 id="destinationModal"
-                 tabindex="-1"
-                 aria-labelledby="destinationModalLabel"
-                 aria-hidden="true">
-                <div
-                     class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title"
-                                id="destinationModalLabel">
-                                Destination</h5>
-                            <button type="button"
-                                    class="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">...</div>
-                        <div class="modal-footer">
-                            <button type="button"
-                                    class="btn btn-primary">Save
-                                changes</button>
-
-                            <button type="button"
-                                    class="btn btn-secondary"
-                                    data-bs-dismiss="modal">
-                                Close
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </body>
-    <script src="main.js"></script>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-    </style>
+    <div
+      class="modal fade"
+      id="occupancyModal"
+      tabindex="-1"
+      aria-labelledby="occupancyModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="occupancyModalLabel">Occupancy</h5>
+          </div>
+          <div class="modal-body guests-modal-body" style="text-align: center; font-size: 1.1rem; font-weight: bold">
+            <div data-dismiss="modal" >1-2</div>
+            <div data-dismiss="modal"  style="margin: 1rem 0">3-4</div>
+            <div data-dismiss="modal" >5-6</div>
+            <div data-dismiss="modal" style="margin: 1rem 0" >7-8</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="modal fade"
+      id="destinationModal"
+      tabindex="-1"
+      aria-labelledby="destinationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="destinationModalLabel">Destination</h5>
+          </div>
+          <div class="modal-body destination-modal-body" style="text-align: center; font-size: 1.1rem; font-weight: bold">
+            <div data-dismiss="modal" >Nur-Sultan</div>
+            <div data-dismiss="modal"  style="margin: 1rem 0">Almaty</div>
+            <div data-dismiss="modal" >Shimkent</div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="main.js"></script>
+  <script src="search.js"></script>
 </html>

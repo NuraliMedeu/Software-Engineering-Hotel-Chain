@@ -92,6 +92,20 @@
   padding-left: 45%;
 }
 
+.hided-input-2 {
+  position: absolute;
+  background-color: transparent;
+  border: transparent;
+  width: 100%;
+  outline: none;
+  caret-color: transparent;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  padding-top: 15%;
+  padding-left: 35%;
+}
+
 @media screen and (max-width: 1400px) {
   .search-box {
     width: 80%;
