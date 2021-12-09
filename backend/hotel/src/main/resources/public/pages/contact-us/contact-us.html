@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+        crossorigin="anonymous" /> -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"
+    />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../main.css" />
+    <link rel="stylesheet" href="../main/main-2.css" />
+    <link rel="stylesheet" href="../signin/signin.css" />
+    <title>Voyage Inn</title>
+    <link
+      rel="shortcut icon"
+      href="../../static/icons/voyage-inn.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body class="bg-black">
+    <header class="header">
+      <div class="logo">
+        <a href="../../index.html" class="white">Voyage Inn</a>
+      </div>
+      <ul>
+        <li>
+          <a href="../../index.html" class="link mr-2">Home</a>
+        </li>
+        <li>
+          <a href="../overview/overview.html" class="link mr-2">Overview</a>
+        </li>
+        <li>
+          <a href="../offers/offers.html" class="link mr-2">Offers</a>
+        </li>
+        <li>
+          <a href="../contact-us/contact-us.html" class="active link mr-2"
+            >Contact us</a
+          >
+        </li>
+        <div class="flex-center">
+          <li>
+            <a href="../signup/signup.html" class="link blue">Join</a>
+          </li>
+          <span style="color: white; margin: 0 4px">|</span>
+          <li>
+            <a href="../signin/signin.html" class="link blue">Sign in</a>
+          </li>
+        </div>
+      </ul>
+    </header>
+    <main class="main">
+      <div
+        class="container"
+        style="display: grid; grid-template-columns: 40% 60%"
+      >
+        <div
+          class="card my-2"
+          style="border-radius: 8px !important; grid-column: 1; grid-row: 1"
+        >
+          <div class="card-body">
+            <h2 class="card-title">Contact us by</h2>
+            <p class="card-text">
+              <img
+                class="icon"
+                src="../../static/icons/email.svg"
+                alt="Email icon"
+              />
+              email@example.com
+            </p>
+            <p class="card-text">
+              <img
+                class="icon"
+                src="../../static/icons/phone.svg"
+                alt="Phone icon"
+              />
+              +1 (111) 111-11-11
+            </p>
+          </div>
+        </div>
+        <form
+          class="paper"
+          style="grid-column: 2; grid-row: 1/3; margin-top: 0.7em !important"
+        >
+          <h3 class="paper-label">
+            Or, leave contacts below so we can arrange an appointment
+          </h3>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="tel" class="form-control" id="phone" />
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            style="
+              margin-left: 40%;
+              margin-top: 3rem;
+              width: 20%;
+              font-size: 1.2rem;
+              border-radius: 8px;
+            "
+            id="signin-btn"
+            onclick=""
+          >
+            Submit
+          </button>
+        </form>
+        <img
+          style="border-radius: 8px; grid-column: 1; grid-row: 2; width: 100%"
+          src="../../static/images/RMO_Facade_22 1.png"
+          alt="Hotel facade"
+        />
+      </div>
+    </main>
+  </body>
+  <script src="../../main.js"></script>
+</html>

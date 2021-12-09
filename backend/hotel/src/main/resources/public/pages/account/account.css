@@ -33,6 +33,15 @@
   width: 15%;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bolder;
+
+  transform: translateY(-15%);
+}
+
 .section-1 {
   margin: 0 13%;
 }

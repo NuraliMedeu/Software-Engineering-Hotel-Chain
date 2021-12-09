@@ -5,6 +5,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -41,6 +44,9 @@ public class Hotel {
     @ManyToOne(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "destination", referencedColumnName="city")
 	private Destination city;
+    
+    @Column(insertable=false, updatable=false)
+    private String destination;
 		
 	@OneToMany(targetEntity=HotelPhone.class, cascade=CascadeType.ALL, mappedBy="id")
 	private List<HotelPhone> phones;
@@ -52,13 +58,13 @@ public class Hotel {
 	private List<HotelRoom> rooms;
 	
 	public Hotel() {}
-
 	public Hotel(Integer id, String name, Destination city, List<HotelPhone> phones, List<HotelRoomType> room_types,
 			List<HotelRoom> rooms) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.city = city;
+		this.destination=city.getCity();
 		this.phones = phones;
 		this.room_types = room_types;
 		this.rooms = rooms;

@@ -51,9 +51,11 @@
     <title>Account</title>
     <link
       rel="shortcut icon"
-      href="/Software-Engineering-Hotel-Chain/static/icons/voyage-inn.png"
+      href="../../static/icons/voyage-inn.png"
       type="image/x-icon"
     />
+    <script src="../../auth.js"></script>
+    <script src="../../main.js"></script>
   </head>
 
   <body class="bg-black">
@@ -63,68 +65,41 @@
       </div>
       <ul>
         <li>
-          <a
-            href="/Software-Engineering-Hotel-Chain/index.html"
-            class="link mr-2"
-            >Home</a
-          >
+          <a href="../../index.html" class="link mr-2">Home</a>
         </li>
         <li>
-          <a
-            href="/Software-Engineering-Hotel-Chain/pages/overview/overview.html"
-            class="link mr-2"
-            >Overview</a
-          >
+          <a href="../overview/overview.html" class="link mr-2">Overview</a>
         </li>
         <li>
-          <a
-            href="/Software-Engineering-Hotel-Chain/pages/offers/offers.html"
-            class="link mr-2"
-            >Offers</a
-          >
+          <a href="../offers/offers.html" class="link mr-2">Offers</a>
         </li>
         <li>
-          <a
-            href="/Software-Engineering-Hotel-Chain/pages/contact-us/contact-us.html"
-            class="link mr-2"
+          <a href="../contact-us/contact-us.html" class="link mr-2"
             >Contact us</a
           >
         </li>
-        <div class="flex">
-          <li>
-            <a
-              href="/Software-Engineering-Hotel-Chain/pages/signup/signup.html"
-              class="link"
-              >Join</a
-            >
-          </li>
-          <span style="color: white; margin: 0 4px">|</span>
-          <li>
-            <a
-              href="/Software-Engineering-Hotel-Chain/pages/signin/signin.html"
-              class="link"
-              >Sign in</a
-            >
-          </li>
+        <div class="flex-center">
+          <img
+            src="../../static/images/user.png"
+            alt="user"
+            class="user-img-navbar"
+          />
+          <span>User name</span>
         </div>
       </ul>
     </header>
     <main class="main">
       <div class="user-block">
-        <img
-          src="/Software-Engineering-Hotel-Chain/static/images/user.png"
-          alt="user"
-          class="user-img"
-        />
+        <img src="../../static/images/user.png" alt="user" class="user-img" />
         <div class="flex-column">
-          <p class="p1">Desk clerk</p>
+          <p class="p1">Manager</p>
           <p class="p2">User name</p>
         </div>
       </div>
       <div class="body">
         <h3>Personal Info</h3>
         <div class="section-1">
-          <div class="paper" style="width: 100%">
+          <div class="paper user-account" style="width: 100%">
             <div class="field"><span>Employee ID:</span><span>int</span></div>
             <div class="field"><span>Position:</span><span>int</span></div>
             <div class="field"><span>Member number:</span><span>int</span></div>
@@ -133,12 +108,12 @@
             <div class="field"><span>Member number:</span><span>int</span></div>
           </div>
         </div>
-        <h3>Bookings requests</h3>
+        <h3>Employees</h3>
         <div class="section-2">
           <div class="paper" style="width: 100%">
             <p style="font-size: 1.2rem">
               <span style="font-weight: 700; margin-right: 0.5rem"
-                >Guest name:</span
+                >Employee name:</span
               >
               Asset
             </p>
@@ -146,13 +121,9 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th scope="col">Hotel ID</th>
-                    <th scope="col">Check-in</th>
-                    <th scope="col">Check-out</th>
-                    <th scope="col">Guests</th>
-                    <th scope="col">Floor</th>
-                    <th scope="col">Room type</th>
-                    <th scope="col">Room number</th>
+                    <th scope="col">Work days</th>
+                    <th scope="col">Work hours</th>
+                    <th scope="col">Payroll</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -160,23 +131,16 @@
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
-                    <td>@mdo</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="btnBox">
-              <button class="btn btn-secondary">Edit</button>
-              <button class="btn btn-danger">Cancel</button>
-              <button class="btn btn-primary">Create</button>
+              <button class="btn btn-secondary">Adjust</button>
             </div>
           </div>
         </div>
       </div>
     </main>
   </body>
-  <script src="main.js"></script>
 </html>

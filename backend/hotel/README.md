@@ -1,180 +1,268 @@
 # Start server
 
-	./mvnw spring-boot:run
-	
+    ./mvnw spring-boot:run
+
 ## API
 
 ### /api/hotel
 
 #### GET
+
 Return an array of hotels.
 
+#### GET (api/hotel/search?city=...&capacity=...)
+
+Example: (/api/hotel/search?city=Shimkent&capacity=1)
+
+Returns an array of hotels according to given filtering:
+
+```json
+[
+  {
+    "id": 3,
+    "name": "Royal",
+    "destination": {
+      "city": "Shimkent"
+    },
+    "phones": [
+      {
+        "phone_number": "001-001"
+      }
+    ],
+    "room_types": [
+      {
+        "id": 3,
+        "type": "single",
+        "size": 6,
+        "capacity": 1
+      }
+    ],
+    "rooms": [
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 1,
+        "availableNow": true
+      },
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [
+          {
+            "email": "test001@gmail.com",
+            "check_in": "2021-12-12",
+            "check_out": "2021-12-18",
+            "id": 5
+          }
+        ],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 2,
+        "availableNow": true
+      },
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 3,
+        "availableNow": true
+      },
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 4,
+        "availableNow": true
+      }
+    ]
+  }
+]
+```
+
+Returns empty array if no hotel matches:
+
+```json
+[]
+```
+
 #### GET (api/hotel/{id})
+
 Return specific hotel entity.
 
 #### POST
+
 Create new hotel entity:
+
 ```json
 {
-	"name": "Some name"
+  "name": "Rixos",
+  "destination": {
+    "city": "Almaty"
+  }
 }
 ```
 
 Returns created entity with its ID.
 
 #### PUT (api/hotel/{id})
+
 Updates existing hotel entity:
+
 ```json
 {
-	"name": "Another name",
-	"destination": {
-		"city": "Almaty"
-	}
+  "name": "Another name",
+  "destination": {
+    "city": "Nur-Sultan"
+  }
 }
 ```
 
 Returns updated entity.
 
 #### DELETE (api/hotel/{id})
+
 Deletes hotel entity.
 
 Returns "Deleted with id: {id}" in case of success, otherwise, "Not Found".
 
-----
+---
 
-### /api/user
-
-#### GET
-Return an array of user.
-
-#### GET (api/user/{email})
-Return specific user entity.
-
-#### POST
-Create new user entity:
-```json
-{
-	"email": "test@gmail.com",
-	"password": "12345"
-}
-```
-
-Returns created entity with.
-
-#### PUT (api/user/{email})
-Updates existing user entity:
-```json
-{
-	"password": "54321"
-}
-```
-
-Returns updated entity.
-
-#### DELETE (api/user/{email})
-Deletes user entity.
-
-Returns "Deleted with email: {email}" in case of success, otherwise, "Not Found".
-
-----
-
-### /api/guest
-
-#### GET
-Return an array of guests.
-
-
-#### POST
-Create new guest entity:
-```json
-{
-	"name": "John",
-	"surname": "Doe",
-	"email": "test@gmail.com",
-	"id_typeNum": 1,
-	"id_number": "111222"
 ### /api/user_types
 
 #### GET
+
 Return an array of user types.
 
-----
+---
 
 ### /api/user
 
-#### GET
-Return an array of users.
-
 #### POST
+
 Create new user entity:
+
 ```json
 {
-	"email": "test001@gmail.com",
-	"password": "12345",
-	"name": "John",
-	"surname": "Doe",
-	"id_typeNum": 1,
-	"id_number": "111222"
-	"user_type": {
-		"type": "guest"
-	}
+  "email": "test001@gmail.com",
+  "password": "12345",
+  "name": "John",
+  "surname": "Doe",
+  "id_typeNum": 1,
+  "id_number": "111222",
+  "user_type": {
+    "type": "guest"
+  }
 }
 ```
 
 Returns created entity.
 
-#### GET (api/guest/{email})
-Return entity by its email.
+Error code 500 if the entity already exists.
 
-#### PUT (api/guest/{email}) Work in progress
+#### GET
 
-#### DELETE (api/user/{email}) Work in progress
-#### GET (api/user/{email})
-Return entity by its email.
+For useth authorization.
 
-#### PUT Work in progress
+Request:
 
-#### DELETE  Work in progress
+```json
+{
+  "email": "test001@gmail.com",
+  "password": "12345"
+}
+```
 
-----
+Returns user_type of user on success:
+
+```json
+{
+  "type": "guest"
+}
+```
+
+If password is wrong or entity not found, return error code 500.
+
+#### PUT
+
+Update password.
+
+Request:
+
+```json
+{
+  "email": "test001@gmail.com",
+  "password": "321321"
+}
+```
+
+#### DELETE
+
+Delete user.
+
+Request:
+
+```json
+{
+  "email": "test001@gmail.com"
+}
+```
+
+Returns entity on success.
+
+---
 
 ### /api/id_types
 
 #### GET
+
 Return an array of identification types.
 
-----
+---
 
 ### /api/room_types
 
 #### GET
+
 Returns array of room types in every hotel (id is an id of a hotel)
 
-----
+---
 
 ### /api/rooms
 
 #### GET
+
 Returns array of rooms in every hotel (id is an id of a hotel)
 
-----
+---
 
 ### /api/booking
 
 #### GET
+
 Returns an array of all bookings
 
 #### POST
 
 ```json
 {
-	"email": "test001@gmail.com",
-	"check_in": "2021-12-08",
-	"check_out": "2021-12-10",
-	"room": {
-		"hotel_id": 1,
-		"room_number": 101,
-		"floor": 1
-	}
+  "email": "test001@gmail.com",
+  "check_in": "2021-12-08",
+  "check_out": "2021-12-10",
+  "room": {
+    "hotel_id": 1,
+    "room_number": 101,
+    "floor": 1
+  }
 }
 ```
