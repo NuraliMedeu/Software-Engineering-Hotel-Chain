@@ -57,13 +57,18 @@
     <script src="../../auth.js"></script>
     <script src="../../main.js"></script>
   </head>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
-    </style>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
+  </style>
   <body class="bg-black">
     <header class="header">
       <div class="logo">
-        <a href="../../index.html" style=" font-family: 'Playfair Display', serif;" class="white">Voyage Inn</a>
+        <a
+          href="../../index.html"
+          style="font-family: 'Playfair Display', serif"
+          class="white"
+          >Voyage Inn</a
+        >
       </div>
       <ul>
         <li>
@@ -96,6 +101,12 @@
         <div class="flex-column">
           <p class="p1">Manager</p>
           <p class="p2">User name</p>
+          <button
+            class="btn btn-primary"
+            onClick="localStorage.removeItem('user_data'); window.location.href = '../../index.html'"
+          >
+            Logout
+          </button>
         </div>
       </div>
       <div class="body">

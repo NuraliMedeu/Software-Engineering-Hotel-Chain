@@ -42,6 +42,7 @@ $(document).ready(function () {
       data: JSON.stringify(newFormData),
       success: function (res) {
         console.log("res = ", res);
+        window.location.href = "../signin/signin.html";
       },
     });
   });
@@ -71,6 +72,7 @@ $(document).ready(function () {
       data: JSON.stringify(newFormData),
       success: function (res) {
         localStorage.setItem("user_data", JSON.stringify(res));
+        window.location.href = "../../index.html";
       },
     });
   });

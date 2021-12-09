@@ -1,5 +1,7 @@
 $(document).ready(function () {
   if (localStorage.getItem("search_results")) {
+    var searchContainerForList = document.getElementById("search-container");
+
     var searchBox = ```<div class="card my-3" style="border-radius: 8px !important; grid-column: 1; grid-row: 1">
     <div
       class="card-body"
