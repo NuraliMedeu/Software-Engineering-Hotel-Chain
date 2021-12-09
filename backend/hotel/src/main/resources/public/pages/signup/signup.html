@@ -142,14 +142,23 @@
         </div>
         <label for="forIdtype">ID type</label>
         <select class="form-control" name="id_type" style="margin-bottom: 1rem">
-          <option value="Passport">Passport</option>
-          <option value="Driver license">Driver license</option>
+          <option value="1">Passport</option>
+          <option value="2">Driver license</option>
         </select>
         <div class="form-group">
           <label for="formGroupExampleInput2">ID number</label>
           <input type="text" name="id_number" class="form-control" />
         </div>
-        <div class="custom-control custom-checkbox mb-3">
+        <label>User type</label>
+        <select id="#select-user" name="user_type" class="form-control">
+          <option value="Guest">Guest</option>
+          <option value="Desk clerk">Desk clerk</option>
+          <option value="Manager">Manager</option>
+        </select>
+        <div
+          class="custom-control custom-checkbox mb-3"
+          style="margin-top: 1rem"
+        >
           <input
             type="checkbox"
             name="agree"

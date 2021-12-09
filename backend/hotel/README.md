@@ -1,12 +1,13 @@
 # Start server
 
-	./mvnw spring-boot:run
-	
+    ./mvnw spring-boot:run
+
 ## API
 
 ### /api/hotel
 
 #### GET
+
 Return an array of hotels.
 
 #### GET (api/hotel/search?city=...&capacity=...)
@@ -14,6 +15,7 @@ Return an array of hotels.
 Example: (/api/hotel/search?city=Shimkent&capacity=1)
 
 Returns an array of hotels according to given filtering:
+
 ```json
 [
   {
@@ -89,16 +91,19 @@ Returns an array of hotels according to given filtering:
 ```
 
 Returns empty array if no hotel matches:
+
 ```json
 []
 ```
 
-
 #### GET (api/hotel/{id})
+
 Return specific hotel entity.
 
 #### POST
+
 Create new hotel entity:
+
 ```json
 {
   "name": "Rixos",
@@ -111,47 +116,53 @@ Create new hotel entity:
 Returns created entity with its ID.
 
 #### PUT (api/hotel/{id})
+
 Updates existing hotel entity:
+
 ```json
 {
-	"name": "Another name",
-	"destination": {
-		"city": "Nur-Sultan"
-	}
+  "name": "Another name",
+  "destination": {
+    "city": "Nur-Sultan"
+  }
 }
 ```
 
 Returns updated entity.
 
 #### DELETE (api/hotel/{id})
+
 Deletes hotel entity.
 
 Returns "Deleted with id: {id}" in case of success, otherwise, "Not Found".
 
-----
+---
 
 ### /api/user_types
 
 #### GET
+
 Return an array of user types.
 
-----
+---
 
 ### /api/user
 
 #### POST
+
 Create new user entity:
+
 ```json
 {
-	"email": "test001@gmail.com",
-	"password": "12345",
-	"name": "John",
-	"surname": "Doe",
-	"id_typeNum": 1,
-	"id_number": "111222",
-	"user_type": {
-		"type": "guest"
-	}
+  "email": "test001@gmail.com",
+  "password": "12345",
+  "name": "John",
+  "surname": "Doe",
+  "id_typeNum": 1,
+  "id_number": "111222",
+  "user_type": {
+    "type": "guest"
+  }
 }
 ```
 
@@ -160,17 +171,20 @@ Returns created entity.
 Error code 500 if the entity already exists.
 
 #### GET
+
 For useth authorization.
 
 Request:
+
 ```json
 {
-	"email": "test001@gmail.com",
-	"password": "12345"
+  "email": "test001@gmail.com",
+  "password": "12345"
 }
 ```
 
 Returns user_type of user on success:
+
 ```json
 {
   "type": "guest"
@@ -179,69 +193,76 @@ Returns user_type of user on success:
 
 If password is wrong or entity not found, return error code 500.
 
-
 #### PUT
+
 Update password.
 
 Request:
+
 ```json
 {
-	"email": "test001@gmail.com",
-	"password": "321321"
+  "email": "test001@gmail.com",
+  "password": "321321"
 }
 ```
 
 #### DELETE
+
 Delete user.
 
 Request:
+
 ```json
 {
-	"email": "test001@gmail.com"
+  "email": "test001@gmail.com"
 }
 ```
 
 Returns entity on success.
 
-----
+---
 
 ### /api/id_types
 
 #### GET
+
 Return an array of identification types.
 
-----
+---
 
 ### /api/room_types
 
 #### GET
+
 Returns array of room types in every hotel (id is an id of a hotel)
 
-----
+---
 
 ### /api/rooms
 
 #### GET
+
 Returns array of rooms in every hotel (id is an id of a hotel)
 
-----
+---
 
 ### /api/booking
 
 #### GET
+
 Returns an array of all bookings
 
 #### POST
 
 ```json
 {
-	"email": "test001@gmail.com",
-	"check_in": "2021-12-08",
-	"check_out": "2021-12-10",
-	"room": {
-		"hotel_id": 1,
-		"room_number": 101,
-		"floor": 1
-	}
+  "email": "test001@gmail.com",
+  "check_in": "2021-12-08",
+  "check_out": "2021-12-10",
+  "room": {
+    "hotel_id": 1,
+    "room_number": 101,
+    "floor": 1
+  }
 }
 ```
