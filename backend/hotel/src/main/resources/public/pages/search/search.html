@@ -51,6 +51,7 @@
       type="image/x-icon"
     />
     <script src="../../main.js"></script>
+    <script src="../../search.js"></script>
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap");
@@ -116,19 +117,59 @@
               <h2 style="grid-column: 2; grid-row: 1" class="card-title">
                 "Single", "Room number", "Floor"
               </h2>
-              <p style="grid-column: 2; grid-row: 2" class="card-text">
-                Other info, size, furniture, etc.
-              </p>
+              <div style="grid-column: 2; grid-row: 2" class="card-text">
+                <p>Other info, size, furniture, etc.</p>
+                <p>Other info, size, furniture, etc.</p>
+              </div>
               <button
                 style="grid-column: 3; grid-row: 3; width: 150px"
                 class="btn btn-secondary"
+                data-toggle="modal"
+                data-target="#orderModal"
               >
-                View
+                Pay
               </button>
             </div>
           </div>
         </div>
       </div>
     </main>
+
+    <div
+      class="modal fade"
+      id="orderModal"
+      tabindex="-1"
+      aria-labelledby="orderModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderModalLabel">
+              Room availabilities
+            </h5>
+          </div>
+          <div
+            id="order-modal-body"
+            class="modal-body"
+            style="text-align: center; font-size: 1.1rem; font-weight: bold"
+          >
+            <div data-dismiss="modal">Room: 1</div>
+            <div data-dismiss="modal">Room: 2</div>
+            <div data-dismiss="modal">Room: 3</div>
+            <div data-dismiss="modal">Room: 4</div>
+          </div>
+          <div class="modal-footer">
+            <button
+              id="order-button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+            >
+              Pay
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
