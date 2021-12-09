@@ -65,10 +65,23 @@
 
 ## Users
 	('zakhar.semenov@nu.edu.kz', 'Zakhar', 'Semenov', 1, '11111', '123123'),
-	('galymzhan.baltabay@nu.edu.kz', 'Galymzhan', 'Baltabay', 2, '111-123', '321321')
+	('galymzhan.baltabay@nu.edu.kz', 'Galymzhan', 'Baltabay', 2, '111-123', '321321'),
+	('deadra.krider@gmail.com',      'Deadra',    'Krider',   1, '44112',  'manager', 'mypassword'),
+	('alonso.tela@gmail.com',        'Alonso',    'Tela',     1, '44112',  'manager', 'catdog'),
+	('cathrine.homburg@gmail.com',   'Cathrine',  'Homburg',  2, '441-120','manager', 'fish'),
+	('edith.petosa@gmail.com',       'Edith',     'Petosa',   1, '42102',  'manager', 'funnybunny'),
+	('mckinley.mottai@gmail.com',    'Mckinley', 'Mottai',   1, '11490',  'employee', 'secret')
 
 ## Bookings
 	(nextval('bookings_id_seq'), 'zakhar.semenov@nu.edu.kz', 1, 1, 1, '2021-12-8', '2021-12-10'),
 	(nextval('bookings_id_seq'), 'zakhar.semenov@nu.edu.kz', 1, 2, 1, '2021-12-8', '2021-12-10'),
 	(nextval('bookings_id_seq'), 'galymzhan.baltabay@nu.edu.kz', 4, 1, 1, '2021-12-8', '2021-12-20')
 	
+## Managers
+	(1, 'deadra.krider@gmail.com'),
+    (2, 'alonso.tela@gmail.com'),
+    (3, 'cathrine.homburg@gmail.com'),
+    (4, 'edith.petosa@gmail.com')
+
+## Supervised
+	('deadra.krider@gmail.com', 'mckinley.mottai@gmail.com')

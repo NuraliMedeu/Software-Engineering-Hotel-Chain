@@ -78,19 +78,6 @@ CREATE TABLE public.destinations (
 ALTER TABLE public.destinations OWNER TO postgres;
 
 --
--- Name: employees; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.employees (
-    id integer NOT NULL,
-    name text,
-    surname text
-);
-
-
-ALTER TABLE public.employees OWNER TO postgres;
-
---
 -- Name: hotel_phones; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -194,6 +181,30 @@ ALTER SEQUENCE public.identification_types_id_seq OWNED BY public.identification
 
 
 --
+-- Name: managers; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.managers (
+    hotel_id integer NOT NULL,
+    manager_email text
+);
+
+
+ALTER TABLE public.managers OWNER TO postgres;
+
+--
+-- Name: supervised; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.supervised (
+    manager_email text NOT NULL,
+    employee_email text NOT NULL
+);
+
+
+ALTER TABLE public.supervised OWNER TO postgres;
+
+--
 -- Name: user_types; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -237,7 +248,6 @@ COPY public.bookings (id, email, hotel_id, room_number, floor, check_in, check_o
 2	zakhar.semenov@nu.edu.kz	1	2	1	2021-12-08	2021-12-10
 3	galymzhan.baltabay@nu.edu.kz	4	1	1	2021-12-08	2021-12-20
 4	zakhar.semenov@nu.edu.kz	4	2	1	2021-12-12	2021-12-18
-5	test001@gmail.com	3	2	1	2021-12-12	2021-12-18
 \.
 
 
@@ -249,14 +259,6 @@ COPY public.destinations (city) FROM stdin;
 Almaty
 Nur-Sultan
 Shimkent
-\.
-
-
---
--- Data for Name: employees; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.employees (id, name, surname) FROM stdin;
 \.
 
 
@@ -341,6 +343,27 @@ COPY public.identification_types (id, name) FROM stdin;
 
 
 --
+-- Data for Name: managers; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.managers (hotel_id, manager_email) FROM stdin;
+1	deadra.krider@gmail.com
+2	alonso.tela@gmail.com
+3	cathrine.homburg@gmail.com
+4	edith.petosa@gmail.com
+\.
+
+
+--
+-- Data for Name: supervised; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.supervised (manager_email, employee_email) FROM stdin;
+deadra.krider@gmail.com	mckinley.mottai@gmail.com
+\.
+
+
+--
 -- Data for Name: user_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -357,9 +380,13 @@ employee
 --
 
 COPY public.users (email, name, surname, identification_type, identification_number, user_type, password) FROM stdin;
-zakhar.semenov@nu.edu.kz	Zakhar	Semenov	1	11111	guest	\N
 galymzhan.baltabay@nu.edu.kz	Galymzhan	Baltabay	2	111-123	guest	\N
-test001@gmail.com	Test	Test	1	123123	desk clerk	12345
+deadra.krider@gmail.com	Deadra	Krider	1	44112	manager	mypassword
+alonso.tela@gmail.com	Alonso	Tela	1	44112	manager	catdog
+cathrine.homburg@gmail.com	Cathrine	Homburg	2	441-120	manager	fish
+edith.petosa@gmail.com	Edith	Petosa	1	42102	manager	funnybunny
+mckinley.mottai@gmail.com	Mckinley	Mottai	1	11490	employee	secret
+zakhar.semenov@nu.edu.kz	Zakhar	Semenov	1	11111	guest	123123
 \.
 
 
@@ -367,7 +394,11 @@ test001@gmail.com	Test	Test	1	123123	desk clerk	12345
 -- Name: bookings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
+SELECT pg_catalog.setval('public.bookings_id_seq', 5, true);
+
+
 --
+-- Name: hotels_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.hotels_id_seq', 4, true);
@@ -394,14 +425,6 @@ ALTER TABLE ONLY public.bookings
 
 ALTER TABLE ONLY public.destinations
     ADD CONSTRAINT destinations_pkey PRIMARY KEY (city);
-
-
---
--- Name: employees employees_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.employees
-    ADD CONSTRAINT employees_pkey PRIMARY KEY (id);
 
 
 --
@@ -461,11 +484,35 @@ ALTER TABLE ONLY public.identification_types
 
 
 --
+-- Name: managers managers_hotel_id_manager_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.managers
+    ADD CONSTRAINT managers_hotel_id_manager_email_key UNIQUE (hotel_id, manager_email);
+
+
+--
+-- Name: managers managers_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.managers
+    ADD CONSTRAINT managers_pkey PRIMARY KEY (hotel_id);
+
+
+--
 -- Name: bookings no_overlapping_dates; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.bookings
     ADD CONSTRAINT no_overlapping_dates EXCLUDE USING gist (hotel_id WITH =, room_number WITH =, floor WITH =, daterange(check_in, check_out, '[]'::text) WITH &&);
+
+
+--
+-- Name: supervised supervised_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.supervised
+    ADD CONSTRAINT supervised_pkey PRIMARY KEY (manager_email, employee_email);
 
 
 --
@@ -509,6 +556,14 @@ ALTER TABLE ONLY public.hotels
 
 
 --
+-- Name: supervised employee_email_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.supervised
+    ADD CONSTRAINT employee_email_fkey FOREIGN KEY (employee_email) REFERENCES public.users(email);
+
+
+--
 -- Name: hotel_room_types fk_hotel_id; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -538,6 +593,30 @@ ALTER TABLE ONLY public.users
 
 ALTER TABLE ONLY public.users
     ADD CONSTRAINT guests_identification_type_fkey FOREIGN KEY (identification_type) REFERENCES public.identification_types(id);
+
+
+--
+-- Name: managers hotel_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.managers
+    ADD CONSTRAINT hotel_id_fkey FOREIGN KEY (hotel_id) REFERENCES public.hotels(id);
+
+
+--
+-- Name: managers manager_email_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.managers
+    ADD CONSTRAINT manager_email_fkey FOREIGN KEY (manager_email) REFERENCES public.users(email);
+
+
+--
+-- Name: supervised manager_email_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.supervised
+    ADD CONSTRAINT manager_email_fkey FOREIGN KEY (manager_email) REFERENCES public.users(email);
 
 
 --
