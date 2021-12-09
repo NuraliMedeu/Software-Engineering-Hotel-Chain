@@ -1,29 +1,4 @@
 $(document).ready(function () {
-  if (localStorage.getItem("user_data")) {
-    var navbarUsername = document.getElementsByClassName("flex-center");
-
-    navbarUsername.forEach((item) => {
-      var htmlEl =
-        '<img src="../../static/images/user.png" alt="user" class="user-img-navbar" /><span>User name</span>';
-      item.innerHTML = htmlEl;
-      item.onclick = (e) => {
-        switch (userData.user_type) {
-          case "user":
-            window.location.href = "../account/user-account.html";
-            break;
-          case "desk clerk":
-            window.location.href = "../account/dc-account.html";
-            break;
-          case "manager":
-            window.location.href = "../account/manager-account.html";
-            break;
-          default:
-            break;
-        }
-      };
-    });
-  }
-
   $("#signup-btn").on("click", function (e) {
     e.preventDefault();
     var form = document.getElementById("signup-form");
@@ -88,16 +63,15 @@ $(document).ready(function () {
 
     console.log("new form = ", JSON.stringify(newFormData));
 
-    // $.ajax({
-    //   url: "http://localhost:8080/api/user",
-    //   type: "POST",
-    //   dataType: "json",
-    //   contentType: "application/json",
-    //   data: JSON.stringify(newFormData),
-    //   success: function (res) {
-    //     console.log("res = ", res);
-    //   localStorage.setItem("user_data", JSON.stringify(res.user));
-    //   },
-    // });
+    $.ajax({
+      url: "http://localhost:8080/api/user/login",
+      type: "POST",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify(newFormData),
+      success: function (res) {
+        localStorage.setItem("user_data", JSON.stringify(res));
+      },
+    });
   });
 });
