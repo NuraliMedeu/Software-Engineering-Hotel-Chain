@@ -4,7 +4,7 @@ $(document).ready(function () {
     var searchResults = JSON.parse(localStorage.getItem("search_results"));
 
     console.log("searchContainerForList = ", searchContainerForList);
-    if (searchResults?.length > 0)
+    if (searchResults?.length > 0 && searchContainerForList)
       searchResults.forEach((item) => {
         let searchBox = `<div class="card my-3" style="border-radius: 8px !important; grid-column: 1; grid-row: 1"><div class="card-body" style="display: grid; grid-template-columns: 33% 50% 17%" > <img style="grid-column: 1; grid-row: 1/4; width: 90%" src="../../static/images/Одноместный номер СПА-отель Мелоот 1 1 (1).png" alt="Single room" /> <h2 style="grid-column: 2; grid-row: 1" class="card-title"> Name: ${item.name} </h2> <div style="grid-column: 2; grid-row: 2" class="card-text"> <p>Phone number:</p> <p>${item.phones[0]?.phone_number}</p> <p>Rooms:</p>`;
         for (let i = 0; i < item.rooms.length; i++) {
@@ -16,11 +16,9 @@ $(document).ready(function () {
         }
         searchBox +=
           '</div><button style="grid-column: 3; grid-row: 3; width: 150px" class="btn btn-secondary" data-toggle="modal" data-target="#orderModal">Order</button></div></div>';
-        console.log("sear = ", searchBox);
         searchContainerForList.innerHTML = searchBox;
         var div = document.createElement("div");
         div.innerHTML = searchBox;
-        searchContainerForList.appendChild(div);
       });
   }
 
@@ -30,9 +28,10 @@ $(document).ready(function () {
       type: "POST",
       contentType: "application/json",
       success: function (res) {
-        console.log("res = ", res);
         localStorage.setItem("search_results", JSON.stringify(res));
-        window.location.href = "pages/search/search.html";
+        window.location.replace(
+          "http://localhost:8080/pages/search/search.html"
+        );
       },
     });
   });
@@ -57,9 +56,10 @@ $(document).ready(function () {
       type: "GET",
       contentType: "application/json",
       success: function (res) {
-        console.log("res = ", res);
         localStorage.setItem("search_results", JSON.stringify(res));
-        window.location.href = "pages/search/search.html";
+        window.location.replace(
+          "http://localhost:8080/pages/search/search.html"
+        );
       },
     });
   });
