@@ -22,7 +22,7 @@ public class UserController {
 	}
 	
 	@GetMapping
-	public UserType getUser(@RequestBody User req) throws Exception {
+	public User getUser(@RequestBody User req) throws Exception {
 		return this.service.validateUser(req);
 	}
 	

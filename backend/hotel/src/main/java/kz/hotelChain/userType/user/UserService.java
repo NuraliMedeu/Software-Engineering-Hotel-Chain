@@ -25,10 +25,10 @@ public class UserService {
 		return this.repo.findById(user.getEmail()).get();
 	}
 	
-	public UserType validateUser(User req) throws Exception {
+	public User validateUser(User req) throws Exception {
 		User user = this.repo.findById(req.getEmail()).get();
 		if (req.getPassword().equals(user.getPassword())) {
-			return user.getUser_type();
+			return user;
 		} else {
 			throw new Exception("Wrong password");
 		}
