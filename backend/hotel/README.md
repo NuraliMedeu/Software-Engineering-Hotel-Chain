@@ -9,6 +9,9 @@
 #### GET
 Return an array of hotels.
 
+#### GET (api/hotel/search) Work in progress
+Return an array of hotels.
+
 #### GET (api/hotel/{id})
 Return specific hotel entity.
 
@@ -16,7 +19,10 @@ Return specific hotel entity.
 Create new hotel entity:
 ```json
 {
-	"name": "Some name"
+  "name": "Rixos",
+  "destination": {
+    "city": "Almaty"
+  }
 }
 ```
 
@@ -28,7 +34,7 @@ Updates existing hotel entity:
 {
 	"name": "Another name",
 	"destination": {
-		"city": "Almaty"
+		"city": "Nur-Sultan"
 	}
 }
 ```
@@ -42,57 +48,6 @@ Returns "Deleted with id: {id}" in case of success, otherwise, "Not Found".
 
 ----
 
-### /api/user
-
-#### GET
-Return an array of user.
-
-#### GET (api/user/{email})
-Return specific user entity.
-
-#### POST
-Create new user entity:
-```json
-{
-	"email": "test@gmail.com",
-	"password": "12345"
-}
-```
-
-Returns created entity with.
-
-#### PUT (api/user/{email})
-Updates existing user entity:
-```json
-{
-	"password": "54321"
-}
-```
-
-Returns updated entity.
-
-#### DELETE (api/user/{email})
-Deletes user entity.
-
-Returns "Deleted with email: {email}" in case of success, otherwise, "Not Found".
-
-----
-
-### /api/guest
-
-#### GET
-Return an array of guests.
-
-
-#### POST
-Create new guest entity:
-```json
-{
-	"name": "John",
-	"surname": "Doe",
-	"email": "test@gmail.com",
-	"id_typeNum": 1,
-	"id_number": "111222"
 ### /api/user_types
 
 #### GET
@@ -123,12 +78,6 @@ Create new user entity:
 
 Returns created entity.
 
-#### GET (api/guest/{email})
-Return entity by its email.
-
-#### PUT (api/guest/{email}) Work in progress
-
-#### DELETE (api/user/{email}) Work in progress
 #### GET (api/user/{email})
 Return entity by its email.
 
