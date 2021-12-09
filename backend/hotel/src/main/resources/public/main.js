@@ -32,13 +32,24 @@ $(document).ready(function () {
       item.onclick = (e) => {
         switch (userData?.user_type?.type) {
           case "guest":
-            window.location.href = "pages/account/user-account.html";
+            window.location.replace(
+              "http://localhost:8080/pages/account/user-account.html"
+            );
             break;
           case "desk clerk":
-            window.location.href = "pages/account/dc-account.html";
+            window.location.replace(
+              "http://localhost:8080/pages/account/dc-account.html"
+            );
             break;
           case "manager":
-            window.location.href = "pages/account/manager-account.html";
+            window.location.replace(
+              "http://localhost:8080/pages/account/manager-account.html"
+            );
+            break;
+          case "employee":
+            window.location.replace(
+              "http://localhost:8080/pages/account/cleaning-account.html"
+            );
             break;
           default:
             break;
