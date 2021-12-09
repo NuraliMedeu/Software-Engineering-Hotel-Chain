@@ -3,10 +3,10 @@ $(document).ready(function () {
     var navbarUsername = document.getElementsByClassName("flex-center");
 
     navbarUsername.forEach((item) => {
+      var htmlEl =
+        '<img src="../../static/images/user.png" alt="user" class="user-img-navbar" /><span>User name</span>';
+      item.innerHTML = htmlEl;
       item.onclick = (e) => {
-        var htmlEl =
-          '<img src="../../static/images/user.png" alt="user" class="user-img-navbar" /><span>User name</span>';
-        item.innerHTML = htmlEl;
         switch (userData.user_type) {
           case "user":
             window.location.href = "../account/user-account.html";
