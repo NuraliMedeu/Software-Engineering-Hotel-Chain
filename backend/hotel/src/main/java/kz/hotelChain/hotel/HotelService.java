@@ -2,14 +2,15 @@ package kz.hotelChain.hotel;
 
 import java.util.List;
 
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+import kz.hotelChain.destination.Destination;
 import kz.hotelChain.repositories.HotelsRepository;
 
 @Service
-@Component
 public class HotelService {
 	private final HotelsRepository repo;
 	
@@ -29,6 +30,10 @@ public class HotelService {
 			System.out.println(e.toString());
 			return null;
 		}
+	}
+
+	public List<Hotel> search(String dest, Integer capacity) {
+		return this.repo.search(dest, capacity);
 	}
 	
 	// TODO

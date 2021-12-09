@@ -9,8 +9,90 @@
 #### GET
 Return an array of hotels.
 
-#### GET (api/hotel/search) Work in progress
-Return an array of hotels.
+#### GET (api/hotel/search?city=...&capacity=...)
+
+Example: (/api/hotel/search?city=Shimkent&capacity=1)
+
+Returns an array of hotels according to given filtering:
+```json
+[
+  {
+    "id": 3,
+    "name": "Royal",
+    "destination": {
+      "city": "Shimkent"
+    },
+    "phones": [
+      {
+        "phone_number": "001-001"
+      }
+    ],
+    "room_types": [
+      {
+        "id": 3,
+        "type": "single",
+        "size": 6,
+        "capacity": 1
+      }
+    ],
+    "rooms": [
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 1,
+        "availableNow": true
+      },
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [
+          {
+            "email": "test001@gmail.com",
+            "check_in": "2021-12-12",
+            "check_out": "2021-12-18",
+            "id": 5
+          }
+        ],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 2,
+        "availableNow": true
+      },
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 3,
+        "availableNow": true
+      },
+      {
+        "floor": 1,
+        "type": "single",
+        "bookings": [],
+        "available": true,
+        "cleaned": false,
+        "id": 3,
+        "roomNumber": 4,
+        "availableNow": true
+      }
+    ]
+  }
+]
+```
+
+Returns empty array if no hotel matches:
+```json
+[]
+```
+
 
 #### GET (api/hotel/{id})
 Return specific hotel entity.

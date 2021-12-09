@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-
 import static javax.persistence.GenerationType.SEQUENCE;
 
 import java.io.Serializable;
@@ -30,6 +29,18 @@ public class HotelRoomType {
 //	@JoinColumn(name="type", referencedColumnName="type")
 	private String type;
 	
+	private Integer size;
+	private Integer capacity;
+	
+	public HotelRoomType() {}
+	public HotelRoomType(Integer id, String type, Integer size, Integer capacity) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.size = size;
+		this.capacity = capacity;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -42,7 +53,19 @@ public class HotelRoomType {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+	public Integer getSize() {
+		return size;
+	}
+	public void setSize(Integer size) {
+		this.size = size;
+	}
+	public Integer getCapacity() {
+		return capacity;
+	}
+	public void setCapacity(Integer capacity) {
+		this.capacity = capacity;
+	}
+
 	@Override
 	public String toString() {
 		return "HotelRoomType [id=" + id + ", type=" + type + "]";
