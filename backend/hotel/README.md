@@ -134,7 +134,8 @@ Returns updated entity.
 
 Deletes hotel entity.
 
-Returns "Deleted with id: {id}" in case of success, otherwise, "Not Found".
+Returns "Deleted with id: {id}" in case of success,
+otherwise, "Not Found".
 
 ---
 
@@ -191,7 +192,8 @@ Returns user_type of user on success:
 }
 ```
 
-If password is wrong or entity not found, return error code 500.
+If password is wrong or entity not found, return error
+code 500.
 
 #### PUT
 
@@ -234,7 +236,8 @@ Return an array of identification types.
 
 #### GET
 
-Returns array of room types in every hotel (id is an id of a hotel)
+Returns array of room types in every hotel (id is an id of a
+hotel)
 
 ---
 
@@ -242,7 +245,8 @@ Returns array of room types in every hotel (id is an id of a hotel)
 
 #### GET
 
-Returns array of rooms in every hotel (id is an id of a hotel)
+Returns array of rooms in every hotel (id is an id of a
+hotel)
 
 ---
 
