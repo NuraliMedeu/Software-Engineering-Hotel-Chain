@@ -31,9 +31,10 @@ ul {
   margin: 0 12%;
 }
 
-.flex {
+.flex-center {
   display: flex;
 }
+
 .center {
   align-items: center;
 }

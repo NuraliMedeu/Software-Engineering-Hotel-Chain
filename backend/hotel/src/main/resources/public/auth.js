@@ -1,4 +1,29 @@
 $(document).ready(function () {
+  if (localStorage.getItem("user_data")) {
+    var navbarUsername = document.getElementsByClassName("flex-center");
+
+    navbarUsername.forEach((item) => {
+      item.onclick = (e) => {
+        var htmlEl =
+          '<img src="../../static/images/user.png" alt="user" class="user-img-navbar" /><span>User name</span>';
+        item.innerHTML = htmlEl;
+        switch (userData.user_type) {
+          case "user":
+            window.location.href = "../account/user-account.html";
+            break;
+          case "desk clerk":
+            window.location.href = "../account/dc-account.html";
+            break;
+          case "manager":
+            window.location.href = "../account/manager-account.html";
+            break;
+          default:
+            break;
+        }
+      };
+    });
+  }
+
   $("#signup-btn").on("click", function (e) {
     e.preventDefault();
     var form = document.getElementById("signup-form");
@@ -44,20 +69,6 @@ $(document).ready(function () {
         console.log("res = ", res);
       },
     });
-
-    // switch (select.value) {
-    //   case "User":
-    //     window.location.href = "../account/user-account.html";
-    //     break;
-    //   case "Desk clerk":
-    //     window.location.href = "../account/dc-account.html";
-    //     break;
-    //   case "Manager":
-    //     window.location.href = "../account/manager-account.html";
-    //     break;
-    //   default:
-    //     break;
-    // }
   });
 
   $("#signin-btn").on("click", function (e) {
@@ -85,6 +96,7 @@ $(document).ready(function () {
     //   data: JSON.stringify(newFormData),
     //   success: function (res) {
     //     console.log("res = ", res);
+    //   localStorage.setItem("user_data", JSON.stringify(res.user));
     //   },
     // });
   });
