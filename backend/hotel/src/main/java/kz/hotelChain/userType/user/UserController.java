@@ -26,6 +26,11 @@ public class UserController {
 		return this.service.validateUser(req);
 	}
 	
+	@PostMapping("/login")
+	public User authorize(@RequestBody User user) throws Exception {
+		return this.service.validateUser(user);
+	}
+
 	@PostMapping
 	public User addUser(@RequestBody User user) throws Exception {
 		return this.service.addUser(user);
