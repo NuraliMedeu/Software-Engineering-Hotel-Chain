@@ -139,9 +139,6 @@ Return an array of user types.
 
 ### /api/user
 
-#### GET
-Return an array of users.
-
 #### POST
 Create new user entity:
 ```json
@@ -151,7 +148,7 @@ Create new user entity:
 	"name": "John",
 	"surname": "Doe",
 	"id_typeNum": 1,
-	"id_number": "111222"
+	"id_number": "111222",
 	"user_type": {
 		"type": "guest"
 	}
@@ -160,12 +157,51 @@ Create new user entity:
 
 Returns created entity.
 
-#### GET (api/user/{email})
-Return entity by its email.
+Error code 500 if the entity already exists.
 
-#### PUT Work in progress
+#### GET
+For useth authorization.
 
-#### DELETE  Work in progress
+Request:
+```json
+{
+	"email": "test001@gmail.com",
+	"password": "12345"
+}
+```
+
+Returns user_type of user on success:
+```json
+{
+  "type": "guest"
+}
+```
+
+If password is wrong or entity not found, return error code 500.
+
+
+#### PUT
+Update password.
+
+Request:
+```json
+{
+	"email": "test001@gmail.com",
+	"password": "321321"
+}
+```
+
+#### DELETE
+Delete user.
+
+Request:
+```json
+{
+	"email": "test001@gmail.com"
+}
+```
+
+Returns entity on success.
 
 ----
 
