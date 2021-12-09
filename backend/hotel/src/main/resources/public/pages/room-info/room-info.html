@@ -1,120 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible"
-              content="IE=edge" />
-        <meta name="viewport"
-              content="width=device-width, initial-scale=1.0" />
-        <!-- <link
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
         crossorigin="anonymous" /> -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-                crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-                integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-                crossorigin="anonymous"></script>
-        <script
-                src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js">
-        </script>
-        <link rel="stylesheet"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+    />
 
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css"
+    />
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-                crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-                crossorigin="anonymous"></script>
-        <link rel="stylesheet"
-              href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-              crossorigin="anonymous" />
-        <link rel="stylesheet"
-              href="../../main.css" />
-        <link rel="stylesheet"
-              href="../main/main-2.css" />
-        <title>Voyage Inn</title>
-        <link rel="shortcut icon"
-              href="../../static/icons/voyage-inn.png"
-              type="image/x-icon" />
-        <script src="../../main.js"></script>
-    </head>
-
-    <body class="bg-black">
-        <header class="header">
-            <div class="logo">
-                <a href="../../index.html"
-                   class="white">Voyage Inn</a>
-            </div>
-            <ul>
-                <li>
-                    <a href="../../index.html"
-                       class="link mr-2">Home</a>
-                </li>
-                <li>
-                    <a href="../overview/overview.html"
-                       class="active link mr-2">Overview</a>
-                </li>
-                <li>
-                    <a href="../offers/offers.html"
-                       class="link mr-2">Offers</a>
-                </li>
-                <li>
-                    <a href="../contact-us/contact-us.html"
-                       class="link mr-2">Contact us</a>
-                </li>
-                <div class="flex-center">
-                    <li>
-                        <a href="../signup/signup.html"
-                           class="link blue">Join</a>
-                    </li>
-                    <span
-                          style="color: white; margin: 0 4px">|</span>
-                    <li>
-                        <a href="../signin/signin.html"
-                           class="link blue">Sign in</a>
-                    </li>
-                </div>
-            </ul>
-        </header>
-        <main class="main">
-            <div class="container">
-                <h1 class="white mt-4">"Room type", "Room
-                    number", "Floor"</h1>
-                <img class="center-block mt-3"
-                     src="../../static/images/Одноместный номер СПА-отель Мелоот 1 1 (1).png"
-                     alt="Hotel room image">
-                <div class="card my-3"
-                     style="border-radius: 8px !important; grid-column: 1; grid-row: 1">
-                    <div class="card-body"
-                         style="display: grid; grid-template-columns: 45% 45% 10%;">
-                        <p class="card-text"
-                           style="grid-column: 1; grid-row: 1; width: 90%;">
-                            Other info, size, furniture,
-                            etc.</p>
-                        <p style="grid-column: 2; grid-row: 1;"
-                           class="card-text">
-                            Price: Mon-Wed: "Price" Thu-Fri:
-                            "Price" Weekends: "Price"
-                        </p>
-                        <p class="card-text"
-                           style="grid-column: 2; grid-row: 2;">
-                            Total price: "Total"
-                        </p>
-                        <button style="grid-column: 3; grid-row: 2; width: 70px;"
-                                class="btn btn-success">Pay</button>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </body>
-
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../../main.css" />
+    <link rel="stylesheet" href="../main/main-2.css" />
+    <title>Voyage Inn</title>
+    <link
+      rel="shortcut icon"
+      href="../../static/icons/voyage-inn.png"
+      type="image/x-icon"
+    />
+    <script src="../../main.js"></script>
+  </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+    </style>
+  <body class="bg-black">
+    <header class="header">
+      <div class="logo">
+        <a href="../../index.html" style=" font-family: 'Playfair Display', serif;" class="white">Voyage Inn</a>
+      </div>
+      <ul>
+        <li>
+          <a href="../../index.html" class="link mr-2">Home</a>
+        </li>
+        <li>
+          <a href="../overview/overview.html" class="active link mr-2"
+            >Overview</a
+          >
+        </li>
+        <li>
+          <a href="../offers/offers.html" class="link mr-2">Offers</a>
+        </li>
+        <li>
+          <a href="../contact-us/contact-us.html" class="link mr-2"
+            >Contact us</a
+          >
+        </li>
+        <div class="flex-center">
+          <li>
+            <a href="../signup/signup.html" class="link blue">Join</a>
+          </li>
+          <span style="color: white; margin: 0 4px">|</span>
+          <li>
+            <a href="../signin/signin.html" class="link blue">Sign in</a>
+          </li>
+        </div>
+      </ul>
+    </header>
+    <main class="main">
+      <div
+        class="container mt-4"
+        style="display: grid; grid-template-columns: 50% 50%; grid-gap: 20px"
+      >
+        <img
+          style="border-radius: 8px; grid-column: 1; grid-row: 1/3; width: 100%"
+          src="../../static/images/otwin0ycalthewjffpea 1.png"
+          alt="Hotel pool and yard"
+        />
+        <div
+          class="text-light"
+          style="border-radius: 8px; grid-column: 2; grid-row: 1; width: 100%"
+        >
+          Info about the hotel chain. List of countries were we have hotels.
+        </div>
+        <div
+          class="text-light"
+          style="border-radius: 8px; grid-column: 2; grid-row: 2; width: 100%"
+        >
+          A gallery.
+        </div>
+      </div>
+      <div
+        class="container mt-3"
+        style="display: grid; grid-template-columns: 10% 90%; grid-gap: 20px"
+      >
+        <div
+          class="bg-white text-black"
+          style="
+            align-items: center;
+            border-radius: 50%;
+            display: flex;
+            font-size: x-large;
+            font-weight: 700;
+            grid-column: 1;
+            grid-row: 1;
+            height: 75px;
+            justify-content: center;
+            width: 75px;
+          "
+        >
+          1
+        </div>
+        <div
+          class="text-light"
+          style="border-radius: 8px; grid-column: 2; grid-row: 1; width: 100%"
+        >
+          <h2>Making change easier</h2>
+          <p>
+            Our bookings can be changed without charge and most rates are able
+            to be canceled without penalty.
+          </p>
+        </div>
+      </div>
+      <div
+        class="container mt-3"
+        style="display: grid; grid-template-columns: 90% 10%; grid-gap: 20px"
+      >
+        <div
+          class="text-light"
+          style="border-radius: 8px; grid-column: 1; grid-row: 1; width: 100%"
+        >
+          <h2>Your health, safety, and well-being</h2>
+          <p>
+            All our hotels are required to adhere to comprehensive health and
+            safety procedures including all local laws.
+          </p>
+        </div>
+        <div
+          class="bg-white text-black"
+          style="
+            align-items: center;
+            border-radius: 50%;
+            display: flex;
+            font-size: x-large;
+            font-weight: 700;
+            grid-column: 2;
+            grid-row: 1;
+            height: 75px;
+            justify-content: center;
+            width: 75px;
+          "
+        >
+          2
+        </div>
+      </div>
+      <div
+        class="container mt-3"
+        style="display: grid; grid-template-columns: 10% 90%; grid-gap: 20px"
+      >
+        <div
+          class="bg-white text-black"
+          style="
+            align-items: center;
+            border-radius: 50%;
+            display: flex;
+            font-size: x-large;
+            font-weight: 700;
+            grid-column: 1;
+            grid-row: 1;
+            height: 75px;
+            justify-content: center;
+            width: 75px;
+          "
+        >
+          3
+        </div>
+        <div
+          class="text-light"
+          style="border-radius: 8px; grid-column: 2; grid-row: 1; width: 100%"
+        >
+          <h2>Flexible Plans</h2>
+          <p>
+            Flexible booking options help you amend your plans as things change.
+          </p>
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
