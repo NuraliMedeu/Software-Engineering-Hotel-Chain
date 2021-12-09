@@ -63,22 +63,23 @@ $(document).ready(function () {
     Array.from(usertype).forEach((item) => {
       item.textContent = userData?.user_type?.type.toString().toUpperCase();
     });
-    Array.from(userDataInProfile).forEach((item) => {
-      let divContent = ``;
+    Array.from(userDataInProfile).forEach((userFields) => {
+      var divContent = ``;
       Object.keys(userData).forEach(function (key) {
-        var val = userData[key];
-        divContent += `<div class="field"><span>${key}:</span><span>${val}</span></div>`;
+        var val = "";
+        if (key === "user_type") val = userData[key].type;
+        else val = userData[key];
+        divContent += `<div class="field"><span>${key
+          .toString()
+          .toUpperCase()}:</span><span>${val}</span></div>`;
       });
-      item.innerHtml = divContent;
-      console.log("item = ", item);
-      console.log("div = ", divContent);
+      userFields.innerHTML = divContent;
     });
 
     Array.from(navbarUsername).forEach((item) => {
       item.style.cursor = "pointer";
       var htmlEl = `<img src="../../static/images/user.png" alt="user" class="user-img-navbar" /><span style="color: white">${userData?.name}</span>`;
       item.innerHTML = htmlEl;
-      console.log("item = ", item);
       item.onclick = (e) => {
         switch (userData?.user_type?.type) {
           case "guest":
